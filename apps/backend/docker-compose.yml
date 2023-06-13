@@ -1,0 +1,72 @@
+version: '3.3'
+
+#acessar o bash do app: docker-compose start  + docker-compose exec app bash
+services:
+  db:
+    platform: linux/arm64/v8
+    image: mysql:8.0
+    container_name: licitarmysql
+    networks:
+      - development-network
+    restart: always
+    environment:
+      MYSQL_DATABASE: licitarDB
+      MYSQL_ROOT_PASSWORD: dblicitar
+    volumes:
+      - ./.docker/volumes/licitar:/var/lib/mysql
+    tty: true
+    ports:
+      - 3307:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    networks:
+      - development-network
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8081:80
+
+  dbtest:
+    container_name: licitarmysqltest
+    platform: linux/arm64/v8
+    image: mysql:8.0
+    networks:
+      - development-network
+    restart: always
+    environment:
+      MYSQL_DATABASE: licitarDB
+      MYSQL_ROOT_PASSWORD: dblicitar
+    tty: true
+    ports:
+      - 3308:3307
+
+  app:
+    platform: linux/arm64/v8
+    #command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done;'
+    #for mac
+    command: sh -c 'sleep 8; node dist/main;'
+    depends_on:
+      - db
+    build: .
+    #entrypoint: .docker/entrypoint.sh
+    container_name: licitarBackend
+    env_file:
+      - .env.prod
+    ports:
+      - 3001:3001
+    volumes:
+      - ~/dev/.docker/volumes/licitar:/home/node/app
+    networks:
+      - development-network
+networks:
+  development-network:
+    driver: bridge

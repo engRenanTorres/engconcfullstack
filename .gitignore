@@ -1,0 +1,3 @@
+node_modules
+apps/frontend/node_modules
+.env

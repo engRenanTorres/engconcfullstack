@@ -1,0 +1,8 @@
+
+> api-eng-concursos@0.0.1 prebuild
+> rimraf dist
+
+
+> api-eng-concursos@0.0.1 build
+> nest build
+
