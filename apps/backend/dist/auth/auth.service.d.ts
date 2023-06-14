@@ -1,8 +1,8 @@
-import { UnauthorizedException } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
-import { User } from '../users/entities/user.entity';
-import { JwtService } from '@nestjs/jwt';
-import { ReqHeaders } from './models/req-headers.model';
+import { UnauthorizedException } from "@nestjs/common";
+import { UsersService } from "../users/users.service";
+import { User } from "../users/entities/user.entity";
+import { JwtService } from "@nestjs/jwt";
+import { ReqHeaders } from "./models/req-headers.model";
 export declare class AuthService {
     private readonly userService;
     private readonly jwtService;

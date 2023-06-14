@@ -10,7 +10,7 @@ exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
 let AppService = class AppService {
     getHello() {
-        return 'Bem vindo ao backend engenharia de concursos!';
+        return "Bem vindo ao backend engenharia de concursos!";
     }
 };
 AppService = __decorate([

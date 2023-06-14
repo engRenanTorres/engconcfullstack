@@ -4,9 +4,9 @@ import {
   ExecutionContext,
   CallHandler,
   ConflictException,
-} from '@nestjs/common';
-import { Observable, catchError } from 'rxjs';
-import { DataBaseError } from '../types/DatabaseError';
+} from "@nestjs/common";
+import { Observable, catchError } from "rxjs";
+import { DataBaseError } from "../types/DatabaseError";
 
 @Injectable()
 export class DatabaseInterceptor implements NestInterceptor {
@@ -18,7 +18,7 @@ export class DatabaseInterceptor implements NestInterceptor {
             throw new ConflictException(error.message);
           } else throw error;
         } else throw error;
-      }),
+      })
     );
   }
 }

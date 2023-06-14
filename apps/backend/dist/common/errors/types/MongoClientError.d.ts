@@ -1,2 +1,2 @@
-import { MongoError } from 'typeorm';
+import { MongoError } from "typeorm";
 export type MongoClientError = MongoError;

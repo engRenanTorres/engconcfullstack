@@ -1,5 +1,5 @@
-import { OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit } from '@nestjs/websockets';
-import { Server, Socket } from 'socket.io';
+import { OnGatewayConnection, OnGatewayDisconnect, OnGatewayInit } from "@nestjs/websockets";
+import { Server, Socket } from "socket.io";
 export declare class BiddingGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
     server: Server;
     private logger;

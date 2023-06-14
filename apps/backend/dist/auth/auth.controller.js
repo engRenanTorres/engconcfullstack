@@ -39,15 +39,15 @@ let AuthController = class AuthController {
     }
 };
 __decorate([
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('local')),
-    (0, common_1.Post)('login'),
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)("local")),
+    (0, common_1.Post)("login"),
     (0, decorators_1.HttpCode)(common_1.HttpStatus.OK),
     (0, swagger_1.ApiOperation)({
-        summary: 'Responsável por emitir o token para logar nas api.',
+        summary: "Responsável por emitir o token para logar nas api.",
     }),
     (0, swagger_1.ApiResponse)({
         status: 200,
-        description: 'Login realizado com sucesso',
+        description: "Login realizado com sucesso",
         type: LoginResponse,
     }),
     openapi.ApiResponse({ status: common_1.HttpStatus.OK, type: Object }),
@@ -58,20 +58,20 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 __decorate([
-    (0, common_1.Get)('session'),
+    (0, common_1.Get)("session"),
     (0, decorators_1.HttpCode)(common_1.HttpStatus.OK),
-    (0, swagger_1.ApiBearerAuth)('jwt'),
+    (0, swagger_1.ApiBearerAuth)("jwt"),
     (0, swagger_1.ApiOperation)({
-        summary: 'Responsável por validar os tokens para o frontend.',
+        summary: "Responsável por validar os tokens para o frontend.",
     }),
     (0, swagger_1.ApiResponse)({
         status: 200,
-        description: 'Token conferido com sucesso',
+        description: "Token conferido com sucesso",
         type: auth_session_swagger_1.SessionReponseOk,
     }),
     (0, swagger_1.ApiResponse)({
         status: 400,
-        description: 'Token inválido',
+        description: "Token inválido",
         type: auth_session_swagger_1.SessionResponseInvalid,
     }),
     openapi.ApiResponse({ status: common_1.HttpStatus.OK, type: Object }),
@@ -81,8 +81,8 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "session", null);
 AuthController = __decorate([
-    (0, common_1.Controller)('auth'),
-    (0, swagger_1.ApiTags)('Auth'),
+    (0, common_1.Controller)("auth"),
+    (0, swagger_1.ApiTags)("Auth"),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);
 exports.AuthController = AuthController;

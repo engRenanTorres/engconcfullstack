@@ -17,24 +17,24 @@ const role_enum_1 = require("./entities/role.enum");
 const DatabaseError_1 = require("../common/errors/types/DatabaseError");
 let UsersService = class UsersService {
     constructor() {
-        this.logger = new common_1.Logger('UserService');
+        this.logger = new common_1.Logger("UserService");
     }
     async onModuleInit() {
         const users = await this.usersRepository.find();
         if (users.length === 0) {
-            this.logger.log('adm user has been created');
+            this.logger.log("adm user has been created");
             const adm = {
-                name: 'Adm',
-                cnpj: '00000000000',
-                email: 'adm@adm.com',
-                password: 'IamAdm123',
+                name: "Adm",
+                cnpj: "00000000000",
+                email: "adm@adm.com",
+                password: "IamAdm123",
                 roles: role_enum_1.Role.ADM,
             };
             const normal = {
-                name: 'Normal',
-                cnpj: '00000000002',
-                email: 'normal@normal.com',
-                password: 'IamNormal123',
+                name: "Normal",
+                cnpj: "00000000002",
+                email: "normal@normal.com",
+                password: "IamNormal123",
                 roles: role_enum_1.Role.USER,
             };
             const admUser = this.usersRepository.create(adm);
@@ -43,7 +43,7 @@ let UsersService = class UsersService {
             await this.usersRepository.save(user);
             return;
         }
-        this.logger.log('Dont need to create adm. users.length = ' + users.length);
+        this.logger.log("Dont need to create adm. users.length = " + users.length);
         return;
     }
     async findAll() {
@@ -93,7 +93,7 @@ let UsersService = class UsersService {
     }
 };
 __decorate([
-    (0, common_1.Inject)('USER_REPOSITORY'),
+    (0, common_1.Inject)("USER_REPOSITORY"),
     __metadata("design:type", typeorm_1.Repository)
 ], UsersService.prototype, "usersRepository", void 0);
 UsersService = __decorate([

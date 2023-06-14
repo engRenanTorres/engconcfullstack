@@ -10,8 +10,8 @@ export declare class UserFindSwagger extends UserFindSwagger_base {
 export declare class InvalidPasswordResponse {
     statusCode: 400;
     message: [
-        'The password must == Capital letter, lowercase, numbers, special caracters and have at least 6 digits.'
+        "The password must == Capital letter, lowercase, numbers, special caracters and have at least 6 digits."
     ];
-    error: 'Bad Request';
+    error: "Bad Request";
 }
 export {};

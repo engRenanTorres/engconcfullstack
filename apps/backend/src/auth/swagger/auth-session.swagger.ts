@@ -1,5 +1,5 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { UserFindSwagger } from '../../users/swagger/index-users.swagger';
+import { ApiProperty } from "@nestjs/swagger";
+import { UserFindSwagger } from "../../users/swagger/index-users.swagger";
 
 export class SessionReponseOk {
   @ApiProperty()

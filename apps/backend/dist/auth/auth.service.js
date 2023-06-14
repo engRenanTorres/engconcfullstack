@@ -51,7 +51,7 @@ let AuthService = class AuthService {
             });
         }
         catch (error) {
-            throw new common_1.UnauthorizedException('The Authorization Token is not Valid: ' + error.message);
+            throw new common_1.UnauthorizedException("The Authorization Token is not Valid: " + error.message);
         }
         const decodedToken = this.jwtService.decode(accessToken);
         let user;
@@ -59,7 +59,7 @@ let AuthService = class AuthService {
             user = await this.userService.findById(decodedToken.sub);
         }
         catch (error) {
-            return new common_1.UnauthorizedException('Usuário inexistente: ' + error.message);
+            return new common_1.UnauthorizedException("Usuário inexistente: " + error.message);
         }
         const sessionResponseDTO = {
             valid: true,

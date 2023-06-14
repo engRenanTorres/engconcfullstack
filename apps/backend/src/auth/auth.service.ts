@@ -1,16 +1,16 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
-import { compareSync } from 'bcrypt';
-import { User } from '../users/entities/user.entity';
-import { JwtService } from '@nestjs/jwt';
-import { TokenPayload } from './models/jwt-payload.model';
-import { ReqHeaders } from './models/req-headers.model';
+import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { UsersService } from "../users/users.service";
+import { compareSync } from "bcrypt";
+import { User } from "../users/entities/user.entity";
+import { JwtService } from "@nestjs/jwt";
+import { TokenPayload } from "./models/jwt-payload.model";
+import { ReqHeaders } from "./models/req-headers.model";
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly userService: UsersService,
-    private readonly jwtService: JwtService,
+    private readonly jwtService: JwtService
   ) {}
 
   async login(user: User): Promise<{ token: string }> {
@@ -46,7 +46,7 @@ export class AuthService {
       });
     } catch (error) {
       throw new UnauthorizedException(
-        'The Authorization Token is not Valid: ' + error.message,
+        "The Authorization Token is not Valid: " + error.message
       );
     }
     const decodedToken = this.jwtService.decode(accessToken) as TokenPayload;
@@ -55,7 +55,7 @@ export class AuthService {
     try {
       user = await this.userService.findById(decodedToken.sub);
     } catch (error) {
-      return new UnauthorizedException('Usuário inexistente: ' + error.message);
+      return new UnauthorizedException("Usuário inexistente: " + error.message);
     }
     const sessionResponseDTO = {
       valid: true,

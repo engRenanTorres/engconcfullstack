@@ -1,4 +1,4 @@
-import { Role } from '../entities/role.enum';
+import { Role } from "../entities/role.enum";
 export declare class CreateSpecialUserDto {
     readonly name: string;
     readonly cnpj: string;

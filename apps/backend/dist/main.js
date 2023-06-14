@@ -10,25 +10,25 @@ const unauthorized_interceptor_1 = require("./common/errors/interceptors/unautho
 const notfound_interceptor_1 = require("./common/errors/interceptors/notfound.interceptor");
 const database_interceptor_1 = require("./common/errors/interceptors/database.interceptor");
 (0, dotenv_1.config)({
-    path: process.env.NODE_ENV === 'test' ? '.env.testing' : '.env',
+    path: process.env.NODE_ENV === "test" ? ".env.testing" : ".env",
 });
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const config = new swagger_1.DocumentBuilder()
-        .setTitle('Api backend do Engenharia de concursos')
-        .setDescription('Api para backend')
-        .setVersion('1.0')
+        .setTitle("Api backend do Engenharia de concursos")
+        .setDescription("Api para backend")
+        .setVersion("1.0")
         .addBearerAuth({
         description: `Insira seu token aqui. Não precisa de Bearer.`,
-        name: 'Authorization',
-        bearerFormat: 'Bearer',
-        scheme: 'Bearer',
-        type: 'http',
-        in: 'Header',
-    }, 'jwt')
+        name: "Authorization",
+        bearerFormat: "Bearer",
+        scheme: "Bearer",
+        type: "http",
+        in: "Header",
+    }, "jwt")
         .build();
     const document = dist_1.SwaggerModule.createDocument(app, config);
-    dist_1.SwaggerModule.setup('api-docs', app, document);
+    dist_1.SwaggerModule.setup("api-docs", app, document);
     app
         .useGlobalPipes(new common_1.ValidationPipe({
         whitelist: true,
@@ -39,7 +39,7 @@ async function bootstrap() {
     app.useGlobalInterceptors(new unauthorized_interceptor_1.UnauthorizedInterceptor());
     app.useGlobalInterceptors(new notfound_interceptor_1.NotFoundInterceptor());
     app.useGlobalInterceptors(new database_interceptor_1.DatabaseInterceptor());
-    app.setGlobalPrefix('api');
+    app.setGlobalPrefix("api");
     await app.listen(process.env.APP_PORT);
 }
 bootstrap();

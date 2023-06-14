@@ -4,9 +4,9 @@ import {
   ExecutionContext,
   CallHandler,
   UnauthorizedException,
-} from '@nestjs/common';
-import { Observable, catchError } from 'rxjs';
-import { UnauthorizedError } from '../types/UnauthorizedError';
+} from "@nestjs/common";
+import { Observable, catchError } from "rxjs";
+import { UnauthorizedError } from "../types/UnauthorizedError";
 
 @Injectable()
 export class UnauthorizedInterceptor implements NestInterceptor {
@@ -16,7 +16,7 @@ export class UnauthorizedInterceptor implements NestInterceptor {
         if (error instanceof UnauthorizedError)
           throw new UnauthorizedException(error.message);
         else throw error;
-      }),
+      })
     );
   }
 }

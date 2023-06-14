@@ -1,7 +1,7 @@
-import { OnModuleInit } from '@nestjs/common';
-import { User } from './entities/user.entity';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto/update-user.dto';
+import { OnModuleInit } from "@nestjs/common";
+import { User } from "./entities/user.entity";
+import { CreateUserDto } from "./dto/create-user.dto";
+import { UpdateUserDto } from "./dto/update-user.dto/update-user.dto";
 export declare class UsersService implements OnModuleInit {
     private readonly usersRepository;
     private logger;

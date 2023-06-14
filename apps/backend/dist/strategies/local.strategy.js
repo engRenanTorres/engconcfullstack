@@ -19,7 +19,7 @@ const message_helper_1 = require("../helpers/message.helper");
 let LocalStrategy = class LocalStrategy extends (0, passport_1.PassportStrategy)(passport_local_1.Strategy) {
     constructor(authService) {
         super({
-            usernameField: 'email',
+            usernameField: "email",
         });
         this.authService = authService;
     }

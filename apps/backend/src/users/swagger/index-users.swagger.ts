@@ -1,4 +1,4 @@
-import { ApiProperty, OmitType } from '@nestjs/swagger';
+import { ApiProperty, OmitType } from "@nestjs/swagger";
 
 export class IndexUsersSwagger {
   @ApiProperty()
@@ -12,7 +12,7 @@ export class IndexUsersSwagger {
 }
 
 export class UserFindSwagger extends OmitType(IndexUsersSwagger, [
-  'password',
+  "password",
 ]) {}
 
 export class InvalidPasswordResponse {
@@ -20,8 +20,8 @@ export class InvalidPasswordResponse {
   statusCode: 400;
   @ApiProperty()
   message: [
-    'The password must == Capital letter, lowercase, numbers, special caracters and have at least 6 digits.',
+    "The password must == Capital letter, lowercase, numbers, special caracters and have at least 6 digits."
   ];
   @ApiProperty()
-  error: 'Bad Request';
+  error: "Bad Request";
 }

@@ -27,14 +27,14 @@ let RolesGuard = class RolesGuard {
         if (!requiredRoles) {
             return true;
         }
-        let token = context.switchToHttp().getRequest().get('authorization');
+        let token = context.switchToHttp().getRequest().get("authorization");
         const tokenPayload = process.env.TOKEN_KEY;
         if (!tokenPayload)
-            throw new Error('Token key is not set');
+            throw new Error("Token key is not set");
         if (token) {
             token = token.slice(7);
             (0, jsonwebtoken_1.verify)(token, tokenPayload, (error, decode) => {
-                if (typeof decode === 'object') {
+                if (typeof decode === "object") {
                     userData = decode;
                 }
             });

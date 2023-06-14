@@ -23,13 +23,13 @@ let AppController = class AppController {
     }
 };
 __decorate([
-    (0, common_1.Get)('/'),
-    (0, swagger_1.ApiTags)('Inicial'),
+    (0, common_1.Get)("/"),
+    (0, swagger_1.ApiTags)("Inicial"),
     (0, common_1.HttpCode)(common_1.HttpStatus.OK),
-    (0, swagger_1.ApiOperation)({ summary: 'Api de boas vindas' }),
+    (0, swagger_1.ApiOperation)({ summary: "Api de boas vindas" }),
     (0, swagger_1.ApiResponse)({
         status: 200,
-        description: 'Dá boas vindas para teste.',
+        description: "Dá boas vindas para teste.",
     }),
     openapi.ApiResponse({ status: common_1.HttpStatus.OK, type: String }),
     __metadata("design:type", Function),

@@ -14,7 +14,7 @@ let HttpExceptionFilter = class HttpExceptionFilter {
         const response = context.getResponse();
         const status = exception.getStatus();
         const exceptionReponse = exception.getResponse();
-        const error = typeof response === 'string'
+        const error = typeof response === "string"
             ? { message: exceptionReponse }
             : exceptionReponse;
         const customHttpExceptionResponse = Object.assign(Object.assign({ success: 0 }, error), { timestamp: new Date().toISOString() });

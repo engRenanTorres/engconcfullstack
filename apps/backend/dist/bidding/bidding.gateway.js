@@ -15,19 +15,19 @@ const websockets_1 = require("@nestjs/websockets");
 const socket_io_1 = require("socket.io");
 let BiddingGateway = class BiddingGateway {
     constructor() {
-        this.logger = new common_1.Logger('AppGateway');
+        this.logger = new common_1.Logger("AppGateway");
     }
     afterInit(server) {
-        this.logger.log('Init');
+        this.logger.log("Init");
     }
     handleConnection(client) {
-        this.logger.log('Connected');
+        this.logger.log("Connected");
     }
     handleDisconnect(client) {
-        this.logger.log('Disconnected');
+        this.logger.log("Disconnected");
     }
     handleMessage(client, payload) {
-        this.server.emit('offerToClient', payload, client.id);
+        this.server.emit("offerToClient", payload, client.id);
     }
 };
 __decorate([
@@ -35,7 +35,7 @@ __decorate([
     __metadata("design:type", socket_io_1.Server)
 ], BiddingGateway.prototype, "server", void 0);
 __decorate([
-    (0, websockets_1.SubscribeMessage)('offerToServer'),
+    (0, websockets_1.SubscribeMessage)("offerToServer"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [socket_io_1.Socket, Number]),
     __metadata("design:returntype", void 0)

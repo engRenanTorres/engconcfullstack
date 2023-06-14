@@ -15,13 +15,23 @@ const auth_module_1 = require("./auth/auth.module");
 const bidding_gateway_1 = require("./bidding/bidding.gateway");
 const serve_static_1 = require("@nestjs/serve-static");
 const path_1 = require("path");
+const institute_module_1 = require("./institute/institute.module");
+const study_area_module_1 = require("./study-area/study-area.module");
+const subject_module_1 = require("./subject/subject.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [users_module_1.UsersModule, auth_module_1.AuthModule, serve_static_1.ServeStaticModule.forRoot({
-                rootPath: (0, path_1.join)(__dirname, '../..', 'frontend', 'dist'),
-            }),],
+        imports: [
+            users_module_1.UsersModule,
+            auth_module_1.AuthModule,
+            subject_module_1.SubjectModule,
+            study_area_module_1.StudyAreaModule,
+            institute_module_1.InstituteModule,
+            serve_static_1.ServeStaticModule.forRoot({
+                rootPath: (0, path_1.join)(__dirname, "../..", "frontend", "dist"),
+            }),
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, bidding_gateway_1.BiddingGateway],
     })

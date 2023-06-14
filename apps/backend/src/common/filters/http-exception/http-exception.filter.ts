@@ -3,8 +3,8 @@ import {
   Catch,
   ExceptionFilter,
   HttpException,
-} from '@nestjs/common';
-import { Response } from 'express';
+} from "@nestjs/common";
+import { Response } from "express";
 
 @Catch()
 export class HttpExceptionFilter<T extends HttpException>
@@ -18,7 +18,7 @@ export class HttpExceptionFilter<T extends HttpException>
     const exceptionReponse = exception.getResponse();
 
     const error =
-      typeof response === 'string'
+      typeof response === "string"
         ? { message: exceptionReponse }
         : (exceptionReponse as object);
 

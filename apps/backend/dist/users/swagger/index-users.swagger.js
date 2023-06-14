@@ -31,7 +31,7 @@ __decorate([
 ], IndexUsersSwagger.prototype, "roles", void 0);
 exports.IndexUsersSwagger = IndexUsersSwagger;
 class UserFindSwagger extends (0, swagger_1.OmitType)(IndexUsersSwagger, [
-    'password',
+    "password",
 ]) {
 }
 exports.UserFindSwagger = UserFindSwagger;

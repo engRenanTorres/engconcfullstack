@@ -27,12 +27,12 @@ class CreateSpecialUserDto {
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    (0, swagger_1.ApiProperty)({ description: 'Nome completo da empresa.' }),
+    (0, swagger_1.ApiProperty)({ description: "Nome completo da empresa." }),
     __metadata("design:type", String)
 ], CreateSpecialUserDto.prototype, "name", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, swagger_1.ApiProperty)({ description: 'Cnpj da empresa.' }),
+    (0, swagger_1.ApiProperty)({ description: "Cnpj da empresa." }),
     (0, class_validator_1.Matches)(regex_helper_1.RegexHelper.cnpj, {
         message: message_helper_1.MessagesHelper.CNPJ_VALID,
     }),
@@ -40,7 +40,7 @@ __decorate([
 ], CreateSpecialUserDto.prototype, "cnpj", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, swagger_1.ApiProperty)({ description: 'Email para acesso da empresa.' }),
+    (0, swagger_1.ApiProperty)({ description: "Email para acesso da empresa." }),
     (0, class_validator_1.IsEmail)(),
     __metadata("design:type", String)
 ], CreateSpecialUserDto.prototype, "email", void 0);
@@ -55,11 +55,11 @@ __decorate([
 ], CreateSpecialUserDto.prototype, "password", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
-    (0, swagger_1.ApiProperty)({ description: 'Nível de acesso do usuário.', default: 1 }),
+    (0, swagger_1.ApiProperty)({ description: "Nível de acesso do usuário.", default: 1 }),
     __metadata("design:type", Number)
 ], CreateSpecialUserDto.prototype, "roles", void 0);
 exports.CreateSpecialUserDto = CreateSpecialUserDto;
-class CreateUserDto extends (0, swagger_1.OmitType)(CreateSpecialUserDto, ['roles']) {
+class CreateUserDto extends (0, swagger_1.OmitType)(CreateSpecialUserDto, ["roles"]) {
     static _OPENAPI_METADATA_FACTORY() {
         return {};
     }
