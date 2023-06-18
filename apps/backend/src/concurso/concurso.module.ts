@@ -8,5 +8,6 @@ import { concursoProviders } from "./concurso.providers";
   imports: [DatabaseModule],
   controllers: [ConcursoController],
   providers: [ConcursoService, ...concursoProviders],
+  exports: [ConcursoService],
 })
 export class ConcursoModule {}

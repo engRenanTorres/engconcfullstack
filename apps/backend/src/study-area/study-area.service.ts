@@ -7,20 +7,20 @@ import { MessagesHelper } from "../helpers/message.helper";
 
 @Injectable()
 export class StudyAreaService {
-  @Inject("STUDY-AREA_REPOSITORY")
-  private readonly studyAreaResposity: Repository<StudyArea>;
+  @Inject("STUDY_AREA_REPOSITORY")
+  private readonly studyAreasRepository: Repository<StudyArea>;
 
   async create(createStudyAreaDto: CreateStudyAreaDto) {
-    const studyArea = this.studyAreaResposity.create(createStudyAreaDto);
-    return await this.studyAreaResposity.save(studyArea);
+    const studyArea = this.studyAreasRepository.create(createStudyAreaDto);
+    return await this.studyAreasRepository.save(studyArea);
   }
 
   async findAll() {
-    return await this.studyAreaResposity.find({ relations: ["subjects"] });
+    return await this.studyAreasRepository.find({ relations: ["subjects"] });
   }
 
   async findOne(id: number) {
-    const studyArea = await this.studyAreaResposity.findOne({
+    const studyArea = await this.studyAreasRepository.findOne({
       where: { id },
       relations: ["subjects"],
     });
@@ -31,25 +31,32 @@ export class StudyAreaService {
   }
 
   async findOneByName(name: string) {
-    return await this.studyAreaResposity.findOneBy({ name });
+    return await this.studyAreasRepository.findOneBy({ name });
+  }
+  async findById(id: number) {
+    const studyArea = await this.studyAreasRepository.findOneBy({ id: id });
+    if (!studyArea) {
+      throw new NotFoundException(MessagesHelper.ST_AREA_NOT_FOUND + id);
+    }
+    return studyArea;
   }
 
   async update(id: number, updateStudyAreaDto: UpdateStudyAreaDto) {
-    const studyArea = await this.studyAreaResposity.preload({
+    const studyArea = await this.studyAreasRepository.preload({
       id,
       ...updateStudyAreaDto,
     });
     if (!studyArea) {
       throw new NotFoundException(MessagesHelper.ST_AREA_NOT_FOUND + id);
     }
-    return this.studyAreaResposity.save(studyArea);
+    return this.studyAreasRepository.save(studyArea);
   }
 
   async remove(id: number) {
-    const studyArea = await this.studyAreaResposity.findOneBy({ id });
+    const studyArea = await this.studyAreasRepository.findOne({ where: {id }});
     if (!studyArea) {
       throw new NotFoundException(MessagesHelper.ST_AREA_NOT_FOUND + id);
     }
-    return this.studyAreaResposity.remove(studyArea);
+    return this.studyAreasRepository.remove(studyArea);
   }
 }

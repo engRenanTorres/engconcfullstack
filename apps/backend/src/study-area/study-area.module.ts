@@ -8,5 +8,6 @@ import { studyAreaProviders } from "./study-area.providers";
   imports: [DatabaseModule],
   controllers: [StudyAreaController],
   providers: [StudyAreaService, ...studyAreaProviders],
+  exports: [StudyAreaService],
 })
 export class StudyAreaModule {}

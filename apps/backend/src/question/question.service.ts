@@ -5,19 +5,19 @@ import { Answer, Question } from "./entities/question.entity";
 import { Repository } from "typeorm";
 
 @Injectable()
-export class LevelService implements OnModuleInit {
+export class QuestionService implements OnModuleInit {
   constructor(
     @Inject("QUESTION_REPOSITORY")
     private readonly questionRepository: Repository<Question>
   ) {}
 
-  private logger: Logger = new Logger("LevelService");
+  private logger: Logger = new Logger("QuestionService");
 
   async onModuleInit(): Promise<void> {
     const questions = await this.questionRepository.find();
     if (questions.length === 0) {
-      this.logger.log("default level has been created");
-      const level1 = {
+      this.logger.log("default question has been created");
+      const question1 = {
         id: 1,
         question: "Seria eu renan?",
         answer: Answer.V,
@@ -27,7 +27,7 @@ export class LevelService implements OnModuleInit {
           { id: 2, choice: "B) Errado" },
         ],
       } as Question;
-      const level2 = {
+      const question2 = {
         id: 2,
         question: "Quem é o cara mais legal?",
         tip: "questao obvia.",
@@ -40,10 +40,10 @@ export class LevelService implements OnModuleInit {
           { choice: "E) Noira" },
         ],
       } as Question;
-      const question = this.questionRepository.create(level1);
-      const question2 = this.questionRepository.create(level2);
+      const question = this.questionRepository.create(question1);
+      const q2 = this.questionRepository.create(question2);
       await this.questionRepository.save(question);
-      await this.questionRepository.save(question2);
+      await this.questionRepository.save(q2);
       return;
     }
     this.logger.log(
@@ -52,23 +52,23 @@ export class LevelService implements OnModuleInit {
     return;
   }
 
-  create(createLevelDto: CreateQuestionDto) {
-    return "This action adds a new level";
+  create(createQuestionDto: CreateQuestionDto) {
+    return "This action adds a new question";
   }
 
   findAll() {
-    return `This action returns all level`;
+    return `This action returns all question`;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} level`;
+    return `This action returns a #${id} question`;
   }
 
-  update(id: number, updateLevelDto: UpdateQuestionDto) {
-    return `This action updates a #${id} level`;
+  update(id: number, updateQuestionDto: UpdateQuestionDto) {
+    return `This action updates a #${id} question`;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} level`;
+    return `This action removes a #${id} question`;
   }
 }

@@ -7,13 +7,13 @@ import {
   Param,
   Delete,
 } from "@nestjs/common";
-import { LevelService } from "./question.service";
+import { QuestionService } from "./question.service";
 import { CreateQuestionDto } from "./dto/create-question.dto";
 import { UpdateQuestionDto } from "./dto/update-question.dto";
 
-@Controller("level")
+@Controller("question")
 export class QuestionController {
-  constructor(private readonly questionService: LevelService) {}
+  constructor(private readonly questionService: QuestionService) {}
 
   @Post()
   create(@Body() createQuestionDto: CreateQuestionDto) {
@@ -31,8 +31,8 @@ export class QuestionController {
   }
 
   @Patch(":id")
-  update(@Param("id") id: string, @Body() updateLevelDto: UpdateQuestionDto) {
-    return this.questionService.update(+id, updateLevelDto);
+  update(@Param("id") id: string, @Body() updateQuestionDto: UpdateQuestionDto) {
+    return this.questionService.update(+id, updateQuestionDto);
   }
 
   @Delete(":id")

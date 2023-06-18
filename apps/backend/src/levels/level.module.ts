@@ -8,5 +8,6 @@ import { levelProviders } from "./level.providers";
   imports: [DatabaseModule],
   controllers: [LevelController],
   providers: [LevelService, ...levelProviders],
+  exports: [LevelService],
 })
 export class LevelModule {}
