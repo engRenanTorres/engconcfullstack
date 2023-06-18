@@ -2,7 +2,7 @@ import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { hashSync } from "bcrypt";
 import { Role } from "./role.enum";
 
-@Entity("Users")
+@Entity("users")
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -14,7 +14,13 @@ export class User {
   email: string;
   @Column({ name: "password", nullable: true })
   password: string;
-  @Column({ name: "roles", nullable: true, default: 3 })
+  @Column({
+    name: "roles",
+    type: "enum",
+    enum: Role,
+    nullable: true,
+    default: 3,
+  })
   roles: Role;
 
   constructor(user: Partial<User>) {

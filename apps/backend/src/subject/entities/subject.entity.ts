@@ -1,5 +1,12 @@
+import { Question } from "../../question/entities/question.entity";
 import { StudyArea } from "../../study-area/entities/study-area.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 
 @Entity("subjects")
 export class Subject {
@@ -7,8 +14,8 @@ export class Subject {
   id: number;
   @Column({ type: "varchar", length: 50, nullable: false })
   name: string;
-  @Column({})
-  questions: number;
-  @ManyToOne((type) => StudyArea, (study) => study.subjects, { cascade: true })
+  @ManyToOne(() => StudyArea, (study) => study.subjects, { eager: true })
   area: StudyArea;
+  @OneToMany(() => Question, (question) => question.subject)
+  questions: Question[];
 }

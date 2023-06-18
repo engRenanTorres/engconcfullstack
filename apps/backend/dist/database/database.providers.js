@@ -35,7 +35,7 @@ exports.dataSource = new typeorm_1.DataSource({
     password: process.env.DB_PASS,
     database: process.env.DB_TABLE,
     entities: [(0, path_1.join)(__dirname, "**", "*.entity.{ts,js}")],
-    synchronize: process.env.NODE_ENV === "test" ? true : true,
+    synchronize: process.env.NODE_ENV === "test" ? true : false,
     logging: false,
     migrations: [_1686624898364_CreateTables_1.CreateTables1686624898364],
 });

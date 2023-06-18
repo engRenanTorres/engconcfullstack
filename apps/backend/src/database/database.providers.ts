@@ -37,7 +37,7 @@ export const dataSource = new DataSource({
   password: process.env.DB_PASS,
   database: process.env.DB_TABLE,
   entities: [join(__dirname, "**", "*.entity.{ts,js}")],
-  synchronize: process.env.NODE_ENV === "test" ? true : true, //*** NÃO USAR EM PRODUÇÃO!! Pode apagar os dados das tabelas!! ***
+  synchronize: process.env.NODE_ENV === "test" ? true : false, //*** NÃO USAR EM PRODUÇÃO!! Pode apagar os dados das tabelas!! ***
   //migrationsTableName: 'TbMarTelecomMigrations', se precisar mudar o nome da tabela migrations
   logging: false,
   migrations: [CreateTables1686624898364],

@@ -60,7 +60,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], User.prototype, "hasPassword", null);
 User = __decorate([
-    (0, typeorm_1.Entity)("Users"),
+    (0, typeorm_1.Entity)("users"),
     __metadata("design:paramtypes", [Object])
 ], User);
 exports.User = User;
