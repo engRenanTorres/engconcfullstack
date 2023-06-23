@@ -28,9 +28,12 @@ export class QuestionController {
   @UseGuards(AuthGuard("jwt"))
   @ApiBearerAuth("jwt")
   @Roles(Role.ADM, Role.STAFF)
-  create(@Body() createQuestionDto: CreateQuestionDto, @Headers() {authorization}: ReqHeaders) {
+  create(
+    @Body() createQuestionDto: CreateQuestionDto,
+    @Headers() { authorization }: ReqHeaders
+  ) {
     console.log(authorization);
-    
+
     return this.questionService.create(createQuestionDto, authorization);
   }
 
@@ -48,7 +51,11 @@ export class QuestionController {
   @UseGuards(AuthGuard("jwt"))
   @ApiBearerAuth("jwt")
   @Roles(Role.ADM, Role.STAFF)
-  update(@Param("id") id: string, @Body() updateQuestionDto: UpdateQuestionDto, @Headers() {authorization}: ReqHeaders) {
+  update(
+    @Param("id") id: string,
+    @Body() updateQuestionDto: UpdateQuestionDto,
+    @Headers() { authorization }: ReqHeaders
+  ) {
     return this.questionService.update(+id, updateQuestionDto, authorization);
   }
 

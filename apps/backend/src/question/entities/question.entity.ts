@@ -43,11 +43,11 @@ export class Question {
   questionsChoices: QuestionsChoice[];
   @ManyToOne(() => Concurso, (concurso) => concurso.questions, { eager: true })
   concurso: Concurso;
-  @ManyToOne(() => User, {eager: true})
+  @ManyToOne(() => User, { eager: true })
   createdBy: User;
   @Column({ type: "date", nullable: true, default: null })
   createdAt: Date;
-  @ManyToOne(() => User, {eager: true, nullable: true})
+  @ManyToOne(() => User, { eager: true, nullable: true })
   lastUpdateBy: User;
   @Column({ type: "date", nullable: true, default: null })
   lastUpdateAt: Date;
@@ -61,8 +61,8 @@ export class Question {
     questionsChoices?: QuestionsChoice[],
     concurso?: Concurso,
     createdBy?: User | null,
-    lastUpdateBy?: User,
-  ){
+    lastUpdateBy?: User
+  ) {
     this.question = question;
     this.answer = answer;
     this.tip = tip;
@@ -71,7 +71,7 @@ export class Question {
     this.questionsChoices = questionsChoices;
     this.concurso = concurso;
     this.createdBy = createdBy;
-    if(!createdBy) {
+    if (!createdBy) {
       this.lastUpdateBy = lastUpdateBy;
       this.lastUpdateAt = new Date();
     }

@@ -1,4 +1,10 @@
-import { Inject, Injectable, Logger, NotFoundException, OnModuleInit } from "@nestjs/common";
+import {
+  Inject,
+  Injectable,
+  Logger,
+  NotFoundException,
+  OnModuleInit,
+} from "@nestjs/common";
 import { CreateInstituteDto } from "./dto/create-institute.dto";
 import { UpdateInstituteDto } from "./dto/update-institute.dto";
 import { InjectRepository } from "@nestjs/typeorm";

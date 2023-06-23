@@ -1,4 +1,10 @@
-import { Inject, Injectable, Logger, NotFoundException, OnModuleInit } from "@nestjs/common";
+import {
+  Inject,
+  Injectable,
+  Logger,
+  NotFoundException,
+  OnModuleInit,
+} from "@nestjs/common";
 import { CreateStudyAreaDto } from "./dto/create-study-area.dto";
 import { UpdateStudyAreaDto } from "./dto/update-study-area.dto";
 import { StudyArea } from "./entities/study-area.entity";
@@ -28,7 +34,10 @@ export class StudyAreaService implements OnModuleInit {
       await this.create(normal);
       return;
     }
-    this.logger.log("Dont need to create default study areas. studyarea.length = " + users.length);
+    this.logger.log(
+      "Dont need to create default study areas. studyarea.length = " +
+        users.length
+    );
     return;
   }
 
@@ -75,7 +84,9 @@ export class StudyAreaService implements OnModuleInit {
   }
 
   async remove(id: number) {
-    const studyArea = await this.studyAreasRepository.findOne({ where: {id }});
+    const studyArea = await this.studyAreasRepository.findOne({
+      where: { id },
+    });
     if (!studyArea) {
       throw new NotFoundException(MessagesHelper.ST_AREA_NOT_FOUND + id);
     }

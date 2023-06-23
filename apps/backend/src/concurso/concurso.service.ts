@@ -1,4 +1,10 @@
-import { Inject, Injectable, Logger, NotFoundException, OnModuleInit } from "@nestjs/common";
+import {
+  Inject,
+  Injectable,
+  Logger,
+  NotFoundException,
+  OnModuleInit,
+} from "@nestjs/common";
 import { CreateConcursoDto } from "./dto/create-concurso.dto";
 import { UpdateConcursoDto } from "./dto/update-concurso.dto";
 import { Concurso } from "./entities/concurso.entity";
@@ -10,7 +16,7 @@ export class ConcursoService implements OnModuleInit {
   constructor(
     @Inject("CONCURSO_REPOSITORY")
     private readonly concursoRepository: Repository<Concurso>,
-    private readonly instituteService: InstituteService,
+    private readonly instituteService: InstituteService
   ) {}
 
   private logger: Logger = new Logger("ConcursoService");
@@ -22,7 +28,7 @@ export class ConcursoService implements OnModuleInit {
       const conc1: CreateConcursoDto = {
         name: "Petrobras",
         about: "Top",
-        year:2023,
+        year: 2023,
         institute: institute,
       };
       const conc2: CreateConcursoDto = {
@@ -37,7 +43,8 @@ export class ConcursoService implements OnModuleInit {
       return;
     }
     this.logger.log(
-      "Dont need to create default concusos: concurso.length = " + concurso.length
+      "Dont need to create default concusos: concurso.length = " +
+        concurso.length
     );
     return;
   }
@@ -54,7 +61,7 @@ export class ConcursoService implements OnModuleInit {
   async findById(id: number): Promise<Concurso> {
     const concurso = await this.concursoRepository.findOneBy({ id: id });
     if (!concurso) {
-      throw new NotFoundException('concurso not found with id: ' + id);
+      throw new NotFoundException("concurso not found with id: " + id);
     }
     return concurso;
   }

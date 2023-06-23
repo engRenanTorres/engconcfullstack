@@ -1,4 +1,10 @@
-import { Inject, Injectable, Logger, NotFoundException, OnModuleInit } from "@nestjs/common";
+import {
+  Inject,
+  Injectable,
+  Logger,
+  NotFoundException,
+  OnModuleInit,
+} from "@nestjs/common";
 import { CreateQuestionDto } from "./dto/create-question.dto";
 import { UpdateQuestionDto } from "./dto/update-question.dto";
 import { Answer, Question } from "./entities/question.entity";
@@ -19,7 +25,7 @@ export class QuestionService implements OnModuleInit {
     private readonly levelService: LevelService,
     private readonly concursoService: ConcursoService,
     private readonly subjectService: SubjectService,
-    private readonly userService: UsersService,
+    private readonly userService: UsersService
   ) {}
 
   private logger: Logger = new Logger("QuestionService");
@@ -65,11 +71,18 @@ export class QuestionService implements OnModuleInit {
     return;*/
   }
 
-  async create(createQuestionDto: CreateQuestionDto, authorization: string): Promise<Question> {
-    const user = await extractAuthUser(authorization,this.userService);
+  async create(
+    createQuestionDto: CreateQuestionDto,
+    authorization: string
+  ): Promise<Question> {
+    const user = await extractAuthUser(authorization, this.userService);
     const level = await this.levelService.findById(createQuestionDto.levelId);
-    const concurso = await this.concursoService.findById(createQuestionDto.concursoId);
-    const subject = await this.subjectService.findById(createQuestionDto.subjectId);
+    const concurso = await this.concursoService.findById(
+      createQuestionDto.concursoId
+    );
+    const subject = await this.subjectService.findById(
+      createQuestionDto.subjectId
+    );
     const creator = await this.userService.findById(user.id);
     const question = new Question(
       createQuestionDto.question,
@@ -79,8 +92,8 @@ export class QuestionService implements OnModuleInit {
       subject,
       createQuestionDto.questionsChoices as QuestionsChoice[],
       concurso,
-      creator,
-    )
+      creator
+    );
     const newQuestion = this.questionRepository.create(question);
     return await this.questionRepository.save(newQuestion);
   }
@@ -90,14 +103,22 @@ export class QuestionService implements OnModuleInit {
   }
 
   async findOne(id: number) {
-    return await this.questionRepository.findOne({where: {id}});
+    return await this.questionRepository.findOne({ where: { id } });
   }
 
-  async update(id: number, updateQuestionDto: UpdateQuestionDto, authorization: string) {
-    const user = await extractAuthUser(authorization,this.userService);
+  async update(
+    id: number,
+    updateQuestionDto: UpdateQuestionDto,
+    authorization: string
+  ) {
+    const user = await extractAuthUser(authorization, this.userService);
     const level = await this.levelService.findById(updateQuestionDto.levelId);
-    const concurso = await this.concursoService.findById(updateQuestionDto.concursoId);
-    const subject = await this.subjectService.findById(updateQuestionDto.subjectId);
+    const concurso = await this.concursoService.findById(
+      updateQuestionDto.concursoId
+    );
+    const subject = await this.subjectService.findById(
+      updateQuestionDto.subjectId
+    );
     const question = new Question(
       updateQuestionDto.question,
       updateQuestionDto.answer,
@@ -107,9 +128,12 @@ export class QuestionService implements OnModuleInit {
       updateQuestionDto.questionsChoices as QuestionsChoice[],
       concurso,
       null,
-      user,
-    )
-    const updatedQuestion = await this.questionRepository.preload({id: id, ...question});
+      user
+    );
+    const updatedQuestion = await this.questionRepository.preload({
+      id: id,
+      ...question,
+    });
     return await this.questionRepository.save(updatedQuestion);
   }
 

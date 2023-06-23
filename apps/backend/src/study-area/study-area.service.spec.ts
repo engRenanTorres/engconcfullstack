@@ -5,7 +5,6 @@ import { UpdateStudyAreaDto } from "./dto/update-study-area.dto";
 import { NotFoundException } from "@nestjs/common";
 
 describe("StudyAreaService", () => {
-
   let service: StudyAreaService;
   let id: number;
   let expectOutput: CreateStudyAreaDto;
@@ -29,7 +28,8 @@ describe("StudyAreaService", () => {
   describe("create method", () => {
     it("should create a study area", async () => {
       const mockStudyAreaRepository = {
-        create: () => jest.fn().mockReturnValue(Promise.resolve(createStudyAreaDTO)),
+        create: () =>
+          jest.fn().mockReturnValue(Promise.resolve(createStudyAreaDTO)),
         save: jest.fn().mockReturnValue(Promise.resolve(createStudyAreaDTO)),
       };
       //@ts-expect-error defined part of methods
@@ -65,7 +65,9 @@ describe("StudyAreaService", () => {
         update: () =>
           jest.fn().mockReturnValue(Promise.resolve(updateStudyAreaDTO)),
         preload: jest.fn().mockReturnValue(Promise.resolve(updateStudyAreaDTO)),
-        findOneBy: jest.fn().mockReturnValue(Promise.resolve(updateStudyAreaDTO)),
+        findOneBy: jest
+          .fn()
+          .mockReturnValue(Promise.resolve(updateStudyAreaDTO)),
         save: jest.fn().mockReturnValue(Promise.resolve(updateStudyAreaDTO)),
       };
       //@ts-expect-error defined part of methods
@@ -101,13 +103,19 @@ describe("StudyAreaService", () => {
 
   describe("Finding study areas", () => {
     it("should list all studyAreas", async () => {
-      const expectOutputStudyAreas = [{
+      const expectOutputStudyAreas = [
+        {
           name: "Usuario Teste",
           about: "123",
-        }];
+        },
+      ];
       const mockStudyAreaRepository = {
-        findAll: jest.fn().mockReturnValue(Promise.resolve(expectOutputStudyAreas)),
-        find: jest.fn().mockReturnValue(Promise.resolve(expectOutputStudyAreas)),
+        findAll: jest
+          .fn()
+          .mockReturnValue(Promise.resolve(expectOutputStudyAreas)),
+        find: jest
+          .fn()
+          .mockReturnValue(Promise.resolve(expectOutputStudyAreas)),
       };
       //@ts-expect-error defined part of methods
       service["studyAreasRepository"] = mockStudyAreaRepository;

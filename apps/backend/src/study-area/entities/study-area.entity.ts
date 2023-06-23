@@ -5,7 +5,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 export class StudyArea {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column({unique: true})
+  @Column({ unique: true })
   name: string;
   @Column()
   about: string;

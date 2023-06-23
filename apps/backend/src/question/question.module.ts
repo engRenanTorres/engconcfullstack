@@ -9,7 +9,13 @@ import { SubjectModule } from "../subject/subject.module";
 import { UsersModule } from "../users/users.module";
 
 @Module({
-  imports: [DatabaseModule, LevelModule, ConcursoModule, SubjectModule, UsersModule],
+  imports: [
+    DatabaseModule,
+    LevelModule,
+    ConcursoModule,
+    SubjectModule,
+    UsersModule,
+  ],
   controllers: [QuestionController],
   providers: [QuestionService, ...questionProviders],
   exports: [QuestionService],

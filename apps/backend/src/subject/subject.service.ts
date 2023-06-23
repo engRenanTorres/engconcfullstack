@@ -34,10 +34,12 @@ export class SubjectService {
       await this.create(nr12);
       return;
     }
-    this.logger.log("Dont need to create subjects. subjects.length = " + subjects.length);
+    this.logger.log(
+      "Dont need to create subjects. subjects.length = " + subjects.length
+    );
     return;
   }
-  
+
   async create(createSubjectDto: CreateSubjectDto) {
     const subject = this.subjectResposity.create(createSubjectDto);
     return await this.subjectResposity.save(subject);
@@ -50,7 +52,7 @@ export class SubjectService {
   async findById(id: number): Promise<Subject> {
     const subject = await this.subjectResposity.findOneBy({ id: id });
     if (!subject) {
-      throw new NotFoundException('subject not found with id: ' + id);
+      throw new NotFoundException("subject not found with id: " + id);
     }
     return subject;
   }

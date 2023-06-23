@@ -1,4 +1,10 @@
-import { BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { hashSync } from "bcrypt";
 import { Role } from "./role.enum";
 import { Question } from "../../question/entities/question.entity";
@@ -24,9 +30,9 @@ export class User {
   })
   roles: Role;
 
-  @OneToMany(()=> Question, (question) => question.createdBy)
+  @OneToMany(() => Question, (question) => question.createdBy)
   insertedQuestions: Question[];
-  @OneToMany(()=> Question, (question) => question.lastUpdateAt)
+  @OneToMany(() => Question, (question) => question.lastUpdateAt)
   updatedQuestions: Question[];
 
   constructor(user: Partial<User>) {

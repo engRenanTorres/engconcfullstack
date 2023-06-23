@@ -20,7 +20,11 @@ export class CreateQuestionDto {
   question: string;
 
   @IsNotEmpty()
-  @ApiProperty({type: 'enum',enum: Answer, description: "Answer of the question." })
+  @ApiProperty({
+    type: "enum",
+    enum: Answer,
+    description: "Answer of the question.",
+  })
   answer: Answer;
 
   @IsString()
@@ -31,7 +35,7 @@ export class CreateQuestionDto {
   @IsInt()
   @IsNotEmpty()
   levelId: number;
-  
+
   @IsInt()
   @IsNotEmpty()
   subjectId: number;

@@ -1,4 +1,10 @@
-import { Inject, Injectable, Logger, NotFoundException, OnModuleInit } from "@nestjs/common";
+import {
+  Inject,
+  Injectable,
+  Logger,
+  NotFoundException,
+  OnModuleInit,
+} from "@nestjs/common";
 import { CreateLevelDto } from "./dto/create-level.dto";
 import { UpdateLevelDto } from "./dto/update-level.dto";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -30,7 +36,9 @@ export class LevelService implements OnModuleInit {
       await this.create(level2);
       return;
     }
-    this.logger.log("Dont need to create default levels. levels.length = " + levels.length);
+    this.logger.log(
+      "Dont need to create default levels. levels.length = " + levels.length
+    );
     return;
   }
 
@@ -46,7 +54,7 @@ export class LevelService implements OnModuleInit {
   async findById(id: number): Promise<Level> {
     const level = await this.levelRepository.findOneBy({ id: id });
     if (!level) {
-      throw new NotFoundException('concurso not found with id: ' + id);
+      throw new NotFoundException("concurso not found with id: " + id);
     }
     return level;
   }
