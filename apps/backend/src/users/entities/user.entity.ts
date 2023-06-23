@@ -1,6 +1,7 @@
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { hashSync } from "bcrypt";
 import { Role } from "./role.enum";
+import { Question } from "../../question/entities/question.entity";
 
 @Entity("users")
 export class User {
@@ -22,6 +23,11 @@ export class User {
     default: 3,
   })
   roles: Role;
+
+  @OneToMany(()=> Question, (question) => question.createdBy)
+  insertedQuestions: Question[];
+  @OneToMany(()=> Question, (question) => question.lastUpdateAt)
+  updatedQuestions: Question[];
 
   constructor(user: Partial<User>) {
     this.id = user?.id;

@@ -14,6 +14,8 @@ export class Subject {
   id: number;
   @Column({ type: "varchar", length: 50, nullable: false })
   name: string;
+  @Column({ type: "text", nullable: false })
+  about: string;
   @ManyToOne(() => StudyArea, (study) => study.subjects, { eager: true })
   area: StudyArea;
   @OneToMany(() => Question, (question) => question.subject)

@@ -1,4 +1,5 @@
 import {
+  BeforeInsert,
   Column,
   Entity,
   ManyToOne,
@@ -9,6 +10,7 @@ import { QuestionsChoice } from "./questions-choice.entity";
 import { Concurso } from "../../concurso/entities/concurso.entity";
 import { Level } from "../../levels/entities/level.entity";
 import { Subject } from "../../subject/entities/subject.entity";
+import { User } from "../../users/entities/user.entity";
 
 export enum Answer {
   A = "A",
@@ -41,4 +43,42 @@ export class Question {
   questionsChoices: QuestionsChoice[];
   @ManyToOne(() => Concurso, (concurso) => concurso.questions, { eager: true })
   concurso: Concurso;
+  @ManyToOne(() => User, {eager: true})
+  createdBy: User;
+  @Column({ type: "date", nullable: true, default: null })
+  createdAt: Date;
+  @ManyToOne(() => User, {eager: true, nullable: true})
+  lastUpdateBy: User;
+  @Column({ type: "date", nullable: true, default: null })
+  lastUpdateAt: Date;
+
+  constructor(
+    question?: string,
+    answer?: Answer,
+    tip?: string,
+    level?: Level,
+    subject?: Subject,
+    questionsChoices?: QuestionsChoice[],
+    concurso?: Concurso,
+    createdBy?: User | null,
+    lastUpdateBy?: User,
+  ){
+    this.question = question;
+    this.answer = answer;
+    this.tip = tip;
+    this.level = level;
+    this.subject = subject;
+    this.questionsChoices = questionsChoices;
+    this.concurso = concurso;
+    this.createdBy = createdBy;
+    if(!createdBy) {
+      this.lastUpdateBy = lastUpdateBy;
+      this.lastUpdateAt = new Date();
+    }
+  }
+
+  @BeforeInsert()
+  insertDate() {
+    this.createdAt = new Date();
+  }
 }

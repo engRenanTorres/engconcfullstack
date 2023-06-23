@@ -7,7 +7,7 @@ export declare class UsersService implements OnModuleInit {
     private logger;
     onModuleInit(): Promise<void>;
     findAll(): Promise<User[]>;
-    findById(id: string): Promise<User>;
+    findById(id: number): Promise<User>;
     findByEmail(email: string): Promise<User> | null;
     create(createUserDTO: CreateUserDto): Promise<User>;
     update(email: string, updateUserDTO: UpdateUserDto): Promise<User>;

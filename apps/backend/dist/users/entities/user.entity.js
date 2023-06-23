@@ -14,6 +14,7 @@ const openapi = require("@nestjs/swagger");
 const typeorm_1 = require("typeorm");
 const bcrypt_1 = require("bcrypt");
 const role_enum_1 = require("./role.enum");
+const question_entity_1 = require("../../question/entities/question.entity");
 let User = class User {
     constructor(user) {
         this.id = user === null || user === void 0 ? void 0 : user.id;
@@ -26,7 +27,7 @@ let User = class User {
         this.password = (0, bcrypt_1.hashSync)(this.password, 10);
     }
     static _OPENAPI_METADATA_FACTORY() {
-        return { id: { required: true, type: () => Number }, name: { required: true, type: () => String }, cnpj: { required: true, type: () => String }, email: { required: true, type: () => String }, password: { required: true, type: () => String }, roles: { required: true, enum: require("./role.enum").Role } };
+        return { id: { required: true, type: () => Number }, name: { required: true, type: () => String }, cnpj: { required: true, type: () => String }, email: { required: true, type: () => String }, password: { required: true, type: () => String }, roles: { required: true, enum: require("./role.enum").Role }, insertedQuestions: { required: true, type: () => [require("../../question/entities/question.entity").Question] }, updatedQuestions: { required: true, type: () => [require("../../question/entities/question.entity").Question] } };
     }
 };
 __decorate([
@@ -50,9 +51,23 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: "roles", nullable: true, default: 3 }),
+    (0, typeorm_1.Column)({
+        name: "roles",
+        type: "enum",
+        enum: role_enum_1.Role,
+        nullable: true,
+        default: 3,
+    }),
     __metadata("design:type", Number)
 ], User.prototype, "roles", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => question_entity_1.Question, (question) => question.createdBy),
+    __metadata("design:type", Array)
+], User.prototype, "insertedQuestions", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => question_entity_1.Question, (question) => question.lastUpdateAt),
+    __metadata("design:type", Array)
+], User.prototype, "updatedQuestions", void 0);
 __decorate([
     (0, typeorm_1.BeforeInsert)(),
     __metadata("design:type", Function),

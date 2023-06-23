@@ -32,10 +32,8 @@ export class UsersService implements OnModuleInit {
         password: "IamNormal123",
         roles: Role.USER,
       };
-      const admUser = this.usersRepository.create(adm);
-      await this.usersRepository.save(admUser);
-      const user = this.usersRepository.create(normal);
-      await this.usersRepository.save(user);
+      await this.create(adm);
+      await this.create(normal);
       return;
     }
     this.logger.log("Dont need to create adm. users.length = " + users.length);
@@ -46,9 +44,9 @@ export class UsersService implements OnModuleInit {
     return await this.usersRepository.find();
   }
 
-  async findById(id: string): Promise<User> {
-    const user = await this.usersRepository.findOneBy({ id: Number(id) });
-    this.checkIfUserExiste(user, id);
+  async findById(id: number): Promise<User> {
+    const user = await this.usersRepository.findOneBy({ id: id });
+    this.checkIfUserExiste(user, String(id));
     return user;
   }
 

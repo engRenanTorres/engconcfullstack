@@ -1,4 +1,4 @@
-import { Inject, Injectable, Logger, OnModuleInit } from "@nestjs/common";
+import { Inject, Injectable, Logger, NotFoundException, OnModuleInit } from "@nestjs/common";
 import { CreateInstituteDto } from "./dto/create-institute.dto";
 import { UpdateInstituteDto } from "./dto/update-institute.dto";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -28,10 +28,8 @@ export class InstituteService implements OnModuleInit {
         about: "00000000002",
         contact: "normal@normal.com",
       };
-      const b1 = this.instituteRepository.create(banca1);
-      await this.instituteRepository.save(b1);
-      const b2 = this.instituteRepository.create(banca2);
-      await this.instituteRepository.save(b2);
+      await this.create(banca1);
+      await this.create(banca2);
       return;
     }
     this.logger.log(
@@ -40,16 +38,19 @@ export class InstituteService implements OnModuleInit {
     return;
   }
 
-  create(createInstituteDto: CreateInstituteDto) {
-    return "This action adds a new institute";
+  async create(createInstituteDto: CreateInstituteDto) {
+    const institute = this.instituteRepository.create(createInstituteDto);
+    return await this.instituteRepository.save(institute);
   }
 
-  findAll() {
-    return `This action returns all institute`;
+  async findAll() {
+    return await this.instituteRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} institute`;
+  async findById(id: number): Promise<Institute> {
+    const user = await this.instituteRepository.findOneBy({ id: id });
+    this.checkIfUserExiste(user, id);
+    return user;
   }
 
   update(id: number, updateInstituteDto: UpdateInstituteDto) {
@@ -58,5 +59,10 @@ export class InstituteService implements OnModuleInit {
 
   remove(id: number) {
     return `This action removes a #${id} institute`;
+  }
+  private checkIfUserExiste(user: object, id: number) {
+    if (!user) {
+      throw new NotFoundException(`Institute not found by id ${id}`);
+    }
   }
 }

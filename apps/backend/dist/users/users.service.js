@@ -37,21 +37,19 @@ let UsersService = class UsersService {
                 password: "IamNormal123",
                 roles: role_enum_1.Role.USER,
             };
-            const admUser = this.usersRepository.create(adm);
-            await this.usersRepository.save(admUser);
-            const user = this.usersRepository.create(normal);
-            await this.usersRepository.save(user);
+            await this.create(adm);
+            await this.create(normal);
             return;
         }
         this.logger.log("Dont need to create adm. users.length = " + users.length);
         return;
     }
     async findAll() {
-        return this.usersRepository.find();
+        return await this.usersRepository.find();
     }
     async findById(id) {
-        const user = await this.usersRepository.findOneBy({ id: Number(id) });
-        this.checkIfUserExiste(user, id);
+        const user = await this.usersRepository.findOneBy({ id: id });
+        this.checkIfUserExiste(user, String(id));
         return user;
     }
     async findByEmail(email) {

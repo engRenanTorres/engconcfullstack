@@ -27,7 +27,7 @@ export class InstituteController {
 
   @Get(":id")
   findOne(@Param("id") id: string) {
-    return this.instituteService.findOne(+id);
+    return this.instituteService.findById(+id);
   }
 
   @Patch(":id")

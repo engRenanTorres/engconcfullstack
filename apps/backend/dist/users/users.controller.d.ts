@@ -7,7 +7,7 @@ export declare class UsersController {
     private readonly usersService;
     constructor(usersService: UsersService);
     findAll(): Promise<Array<User>>;
-    findById(id: string): Promise<User> | HttpException;
+    findById(id: number): Promise<User> | HttpException;
     create(body: CreateUserDto): Promise<User> | HttpException;
     update(email: string, body: UpdateUserDto): Promise<User> | HttpException;
     remove(email: string): Promise<User>;

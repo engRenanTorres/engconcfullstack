@@ -5,6 +5,7 @@ import { User } from "../users/entities/user.entity";
 import { JwtService } from "@nestjs/jwt";
 import { TokenPayload } from "./models/jwt-payload.model";
 import { ReqHeaders } from "./models/req-headers.model";
+import extractAuthUser from "../helpers/get-auth-user.helper";
 
 @Injectable()
 export class AuthService {
@@ -38,7 +39,7 @@ export class AuthService {
   }
 
   async validateAccessToken(headers: ReqHeaders) {
-    const authHeader = headers.authorization;
+    /*const authHeader = headers.authorization;
     const accessToken = authHeader.slice(7);
     try {
       await this.jwtService.verify(accessToken, {
@@ -56,7 +57,8 @@ export class AuthService {
       user = await this.userService.findById(decodedToken.sub);
     } catch (error) {
       return new UnauthorizedException("Usuário inexistente: " + error.message);
-    }
+    }*/
+    const user = await extractAuthUser(headers.authorization, this.userService);
     const sessionResponseDTO = {
       valid: true,
       credencials: {

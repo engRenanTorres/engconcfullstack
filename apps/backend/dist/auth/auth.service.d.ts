@@ -1,4 +1,3 @@
-import { UnauthorizedException } from "@nestjs/common";
 import { UsersService } from "../users/users.service";
 import { User } from "../users/entities/user.entity";
 import { JwtService } from "@nestjs/jwt";
@@ -11,7 +10,7 @@ export declare class AuthService {
         token: string;
     }>;
     validateUser(email: string, password: string): Promise<User>;
-    validateAccessToken(headers: ReqHeaders): Promise<UnauthorizedException | {
+    validateAccessToken(headers: ReqHeaders): Promise<{
         valid: boolean;
         credencials: {
             id: number;

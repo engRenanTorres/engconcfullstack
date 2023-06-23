@@ -27,7 +27,7 @@ export class LevelController {
 
   @Get(":id")
   findOne(@Param("id") id: string) {
-    return this.levelService.findOne(+id);
+    return this.levelService.findById(+id);
   }
 
   @Patch(":id")

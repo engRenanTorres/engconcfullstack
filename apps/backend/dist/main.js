@@ -18,6 +18,7 @@ async function bootstrap() {
         .setTitle("Api backend do Engenharia de concursos")
         .setDescription("Api para backend")
         .setVersion("1.0")
+        .addServer("api")
         .addBearerAuth({
         description: `Insira seu token aqui. Não precisa de Bearer.`,
         name: "Authorization",

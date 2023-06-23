@@ -14,6 +14,7 @@ const common_1 = require("@nestjs/common");
 const users_service_1 = require("../users/users.service");
 const bcrypt_1 = require("bcrypt");
 const jwt_1 = require("@nestjs/jwt");
+const get_auth_user_helper_1 = require("../helpers/get-auth-user.helper");
 let AuthService = class AuthService {
     constructor(userService, jwtService) {
         this.userService = userService;
@@ -43,24 +44,7 @@ let AuthService = class AuthService {
         return user;
     }
     async validateAccessToken(headers) {
-        const authHeader = headers.authorization;
-        const accessToken = authHeader.slice(7);
-        try {
-            await this.jwtService.verify(accessToken, {
-                publicKey: process.env.TOKEN_KEY,
-            });
-        }
-        catch (error) {
-            throw new common_1.UnauthorizedException("The Authorization Token is not Valid: " + error.message);
-        }
-        const decodedToken = this.jwtService.decode(accessToken);
-        let user;
-        try {
-            user = await this.userService.findById(decodedToken.sub);
-        }
-        catch (error) {
-            return new common_1.UnauthorizedException("Usuário inexistente: " + error.message);
-        }
+        const user = await (0, get_auth_user_helper_1.default)(headers.authorization, this.userService);
         const sessionResponseDTO = {
             valid: true,
             credencials: {

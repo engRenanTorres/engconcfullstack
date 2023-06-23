@@ -27,7 +27,7 @@ export class ConcursoController {
 
   @Get(":id")
   findOne(@Param("id") id: string) {
-    return this.concursoService.findOne(+id);
+    return this.concursoService.findById(+id);
   }
 
   @Patch(":id")

@@ -77,7 +77,7 @@ export class UsersController {
     status: HttpStatus.NOT_FOUND,
     description: UsersMsgSwagger.USER_NOT_FOUND,
   })
-  findById(@Param("id") id: string): Promise<User> | HttpException {
+  findById(@Param("id") id: number): Promise<User> | HttpException {
     const user = this.usersService.findById(id);
     return user;
   }

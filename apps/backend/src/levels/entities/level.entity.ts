@@ -5,7 +5,7 @@ import { Question } from "../../question/entities/question.entity";
 export class Level {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column({ type: "varchar", length: 50, nullable: false })
+  @Column({ type: "varchar", length: 50, nullable: false, unique: true })
   name: string;
   @Column({ nullable: true, default: null })
   about: string;

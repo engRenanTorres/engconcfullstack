@@ -1,15 +1,16 @@
-import { Inject, Injectable, Logger, OnModuleInit } from "@nestjs/common";
+import { Inject, Injectable, Logger, NotFoundException, OnModuleInit } from "@nestjs/common";
 import { CreateConcursoDto } from "./dto/create-concurso.dto";
 import { UpdateConcursoDto } from "./dto/update-concurso.dto";
-import { InjectRepository } from "@nestjs/typeorm";
 import { Concurso } from "./entities/concurso.entity";
 import { Repository } from "typeorm";
+import { InstituteService } from "../institute/institute.service";
 
 @Injectable()
 export class ConcursoService implements OnModuleInit {
   constructor(
     @Inject("CONCURSO_REPOSITORY")
-    private readonly concursoRepository: Repository<Concurso>
+    private readonly concursoRepository: Repository<Concurso>,
+    private readonly instituteService: InstituteService,
   ) {}
 
   private logger: Logger = new Logger("ConcursoService");
@@ -17,39 +18,45 @@ export class ConcursoService implements OnModuleInit {
   async onModuleInit(): Promise<void> {
     const concurso = await this.concursoRepository.find();
     if (concurso.length === 0) {
-      this.logger.log("default concurso has been created");
-      const conc1 = {
+      const institute = await this.instituteService.findById(1);
+      const conc1: CreateConcursoDto = {
         name: "Petrobras",
         about: "Top",
-        contact: "adm@adm.com",
+        year:2023,
+        institute: institute,
       };
-      const conc2 = {
+      const conc2: CreateConcursoDto = {
         name: "Fundação Saúde do Rio de Janeiro",
         about: "00000000002",
-        contact: "normal@normal.com",
+        year: 2022,
+        institute: institute,
       };
-      const c1 = this.concursoRepository.create(conc1);
-      await this.concursoRepository.save(c1);
-      const c2 = this.concursoRepository.create(conc2);
-      await this.concursoRepository.save(c2);
+      await this.create(conc1);
+      await this.create(conc2);
+      this.logger.log("default concurso has been created");
       return;
     }
     this.logger.log(
-      "Dont need to concuso: concurso.length = " + concurso.length
+      "Dont need to create default concusos: concurso.length = " + concurso.length
     );
     return;
   }
 
-  create(createConcursoDto: CreateConcursoDto) {
-    return "This action adds a new concurso";
+  async create(createConcursoDto: CreateConcursoDto) {
+    const concurso = this.concursoRepository.create(createConcursoDto);
+    return await this.concursoRepository.save(concurso);
   }
 
-  findAll() {
-    return `This action returns all concurso`;
+  async findAll(): Promise<Concurso[]> {
+    return await this.concursoRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} concurso`;
+  async findById(id: number): Promise<Concurso> {
+    const concurso = await this.concursoRepository.findOneBy({ id: id });
+    if (!concurso) {
+      throw new NotFoundException('concurso not found with id: ' + id);
+    }
+    return concurso;
   }
 
   update(id: number, updateConcursoDto: UpdateConcursoDto) {

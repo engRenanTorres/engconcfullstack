@@ -21,6 +21,7 @@ async function bootstrap() {
     .setTitle("Api backend do Engenharia de concursos")
     .setDescription("Api para backend")
     .setVersion("1.0")
+    .addServer("api")
     .addBearerAuth(
       {
         // I was also testing it without prefix 'Bearer ' before the JWT
@@ -35,7 +36,7 @@ async function bootstrap() {
     )
     .build();
 
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, config,);
   SwaggerModule.setup("api-docs", app, document);
 
   app

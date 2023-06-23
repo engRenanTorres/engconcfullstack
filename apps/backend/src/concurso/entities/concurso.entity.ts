@@ -17,7 +17,7 @@ export class Concurso {
   name: string;
   @Column({ nullable: true, default: null })
   about: string;
-  @Column({ type: "int" })
+  @Column({ type: "int", nullable: true, default: null })
   year: number;
   @ManyToOne(() => Institute, (institute) => institute.concursos, {
     eager: true,

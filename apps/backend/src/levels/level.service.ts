@@ -1,4 +1,4 @@
-import { Inject, Injectable, Logger, OnModuleInit } from "@nestjs/common";
+import { Inject, Injectable, Logger, NotFoundException, OnModuleInit } from "@nestjs/common";
 import { CreateLevelDto } from "./dto/create-level.dto";
 import { UpdateLevelDto } from "./dto/update-level.dto";
 import { InjectRepository } from "@nestjs/typeorm";
@@ -26,26 +26,29 @@ export class LevelService implements OnModuleInit {
         name: "Técnico",
         about: "00000000002",
       };
-      const sup = this.levelRepository.create(level1);
-      await this.levelRepository.save(sup);
-      const tec = this.levelRepository.create(level2);
-      await this.levelRepository.save(tec);
+      await this.create(level1);
+      await this.create(level2);
       return;
     }
-    this.logger.log("Dont need to levels. levels.length = " + levels.length);
+    this.logger.log("Dont need to create default levels. levels.length = " + levels.length);
     return;
   }
 
-  create(createLevelDto: CreateLevelDto) {
-    return "This action adds a new level";
+  async create(createLevelDto: CreateLevelDto): Promise<Level> {
+    const sup = this.levelRepository.create(createLevelDto);
+    return await this.levelRepository.save(sup);
   }
 
-  findAll() {
-    return `This action returns all level`;
+  async findAll(): Promise<Level[]> {
+    return this.levelRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} level`;
+  async findById(id: number): Promise<Level> {
+    const level = await this.levelRepository.findOneBy({ id: id });
+    if (!level) {
+      throw new NotFoundException('concurso not found with id: ' + id);
+    }
+    return level;
   }
 
   update(id: number, updateLevelDto: UpdateLevelDto) {
