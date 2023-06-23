@@ -10,7 +10,9 @@ import {
 import { LevelService } from "./level.service";
 import { CreateLevelDto } from "./dto/create-level.dto";
 import { UpdateLevelDto } from "./dto/update-level.dto";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags("Level")
 @Controller("level")
 export class LevelController {
   constructor(private readonly levelService: LevelService) {}

@@ -8,16 +8,18 @@ import {
   Delete,
   UseGuards,
   Headers,
+  Query,
 } from "@nestjs/common";
 import { QuestionService } from "./question.service";
 import { CreateQuestionDto } from "./dto/create-question.dto";
 import { UpdateQuestionDto } from "./dto/update-question.dto";
-import { AuthUser } from "../decorators/auth.decorator";
-import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiParam, ApiQuery, ApiTags } from "@nestjs/swagger";
 import { AuthGuard } from "@nestjs/passport";
 import { Roles } from "../decorators/roles.decorator";
 import { Role } from "../users/entities/role.enum";
 import { ReqHeaders } from "../auth/models/req-headers.model";
+import { PageableQueries } from "./queries/pageable-queries.dto";
+import { Question } from "./entities/question.entity";
 
 @Controller("question")
 @ApiTags("Questions")
@@ -40,6 +42,19 @@ export class QuestionController {
   @Get()
   findAll() {
     return this.questionService.findAll();
+  }
+
+  @Get("/pageable")
+  @ApiQuery({ name: "page", type: "int", required: false })
+  @ApiQuery({ name: "limit", type: "int", required: false })
+  findAllPageable(@Query() { page, limit }: PageableQueries) {
+    return this.questionService.findAllPageable(page, limit);
+  }
+
+  @Get("/by-keyword/:keyword")
+  @ApiParam({ name: "keyword", type: "string", required: false })
+  findQuestionsByKeyword(@Param("keyword") keyword: string) {
+    return this.questionService.findQuestionsWithKeyword(keyword);
   }
 
   @Get(":id")

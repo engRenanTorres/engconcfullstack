@@ -10,7 +10,9 @@ import {
 import { SubjectService } from "./subject.service";
 import { CreateSubjectDto } from "./dto/create-subject.dto";
 import { UpdateSubjectDto } from "./dto/update-subject.dto";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags("Subject")
 @Controller("subject")
 export class SubjectController {
   constructor(private readonly subjectService: SubjectService) {}

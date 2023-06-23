@@ -10,7 +10,9 @@ import {
 import { ConcursoService } from "./concurso.service";
 import { CreateConcursoDto } from "./dto/create-concurso.dto";
 import { UpdateConcursoDto } from "./dto/update-concurso.dto";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags("Concurso")
 @Controller("concurso")
 export class ConcursoController {
   constructor(private readonly concursoService: ConcursoService) {}

@@ -10,7 +10,9 @@ import {
 import { InstituteService } from "./institute.service";
 import { CreateInstituteDto } from "./dto/create-institute.dto";
 import { UpdateInstituteDto } from "./dto/update-institute.dto";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags("Institute")
 @Controller("institute")
 export class InstituteController {
   constructor(private readonly instituteService: InstituteService) {}

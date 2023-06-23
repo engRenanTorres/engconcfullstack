@@ -102,7 +102,29 @@ export class QuestionService implements OnModuleInit {
     return await this.questionRepository.find();
   }
 
-  async findOne(id: number) {
+  async findQuestionsWithKeyword(keyword: string): Promise<Question[]> {
+    const query = this.questionRepository.createQueryBuilder("question");
+    query.where("question.question LIKE :keyword", { keyword: `%${keyword}%` });
+    //query.orWhere('question.answer LIKE :keyword', { keyword: `%${keyword}%` });
+    query.orWhere("question.tip LIKE :keyword", { keyword: `%${keyword}%` });
+    //query.orWhere('question.subject.name LIKE :keyword', { keyword: `%${keyword}%` });
+    //query.orWhere('question.subject.area.name LIKE :keyword', { keyword: `%${keyword}%` });
+    // Adicione mais cláusulas "orWhere" para outros campos que você queira pesquisar
+
+    return await query.getMany();
+  }
+
+  async findAllPageable(
+    page: number = 1,
+    limit: number = 10
+  ): Promise<Question[]> {
+    return await this.questionRepository.find({
+      take: limit,
+      skip: (page - 1) * limit,
+    });
+  }
+
+  async findOne(id: number): Promise<Question> {
     return await this.questionRepository.findOne({ where: { id } });
   }
 
