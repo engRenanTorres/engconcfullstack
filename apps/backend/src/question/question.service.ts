@@ -102,14 +102,22 @@ export class QuestionService implements OnModuleInit {
     return await this.questionRepository.find();
   }
 
+  async findTotalQuestions(): Promise<number> {
+    return (await this.questionRepository.find()).length;
+  }
+
+  async findAllByAreaId(areaId: number): Promise<Question[]> {
+    return await this.questionRepository.find({where: {subject: {area: {id: areaId}}  }});
+  }
+
   async findQuestionsWithKeyword(keyword: string): Promise<Question[]> {
     const query = this.questionRepository.createQueryBuilder("question");
+    query.leftJoinAndSelect("question.subject","subject");
+    query.leftJoinAndSelect("question.createdBy","createdBy");
+    query.leftJoinAndSelect("question.concurso","concurso");
     query.where("question.question LIKE :keyword", { keyword: `%${keyword}%` });
-    //query.orWhere('question.answer LIKE :keyword', { keyword: `%${keyword}%` });
-    query.orWhere("question.tip LIKE :keyword", { keyword: `%${keyword}%` });
-    //query.orWhere('question.subject.name LIKE :keyword', { keyword: `%${keyword}%` });
-    //query.orWhere('question.subject.area.name LIKE :keyword', { keyword: `%${keyword}%` });
-    // Adicione mais cláusulas "orWhere" para outros campos que você queira pesquisar
+    query.orWhere("subject.name LIKE :keyword", { keyword: `%${keyword}%` });
+    query.orWhere("concurso.name LIKE :keyword", { keyword: `%${keyword}%` });
 
     return await query.getMany();
   }

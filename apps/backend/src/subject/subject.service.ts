@@ -40,6 +40,10 @@ export class SubjectService {
     return;
   }
 
+  async findByAreaId(areaId: number) {
+    return this.subjectResposity.find({where: {area: {id: areaId}}, relations: {area: true}});
+  }
+
   async create(createSubjectDto: CreateSubjectDto) {
     const subject = this.subjectResposity.create(createSubjectDto);
     return await this.subjectResposity.save(subject);

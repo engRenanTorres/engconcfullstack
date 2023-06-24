@@ -64,7 +64,7 @@ export class StudyAreaService implements OnModuleInit {
   async findOneByName(name: string) {
     return await this.studyAreasRepository.findOneBy({ name });
   }
-  async findById(id: number) {
+  async findById(id: number): Promise<StudyArea> {
     const studyArea = await this.studyAreasRepository.findOneBy({ id: id });
     if (!studyArea) {
       throw new NotFoundException(MessagesHelper.ST_AREA_NOT_FOUND + id);

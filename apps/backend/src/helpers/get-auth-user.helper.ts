@@ -12,7 +12,7 @@ const extractAuthUser = async (
   autorization: string,
   userService: UsersService
 ) => {
-  if (!!autorization)
+  if (!autorization)
     throw new ForbiddenException("Autorization header  is missing.");
   const accessToken = autorization.slice(7);
   const jwtService = new JwtService();

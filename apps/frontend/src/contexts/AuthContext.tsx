@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { ReactNode, createContext, useEffect, useState } from 'react';
+import React, {
+  ReactElement,
+  ReactNode,
+  createContext,
+  useEffect,
+  useState,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Credencials, authService } from '../services/auth/authService';
 import { tokenService } from '../services/auth/tokenService';
@@ -22,7 +28,7 @@ const AuthContext = createContext<AuthContextProps>({
   signout: () => {},
 });
 
-export const AuthProvider: React.FC<Props> = ({ children }: Props) => {
+export function AuthProvider({ children }: Props): ReactElement<Props> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [currentUser, setCurrentUser] = useState<any>(false);
   const [loading, setLoading] = useState(true);
@@ -34,7 +40,7 @@ export const AuthProvider: React.FC<Props> = ({ children }: Props) => {
       return await authService
         .login({ email, password })
         .then(async (response) => {
-          console.log('response', response);
+          // console.log('response', response);
           try {
             const user = await authService.getSession();
             setCurrentUser(user);
@@ -90,7 +96,7 @@ export const AuthProvider: React.FC<Props> = ({ children }: Props) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
 export const AuthConsumer = AuthContext.Consumer;
 

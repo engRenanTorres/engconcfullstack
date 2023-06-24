@@ -52,9 +52,15 @@ export class QuestionController {
   }
 
   @Get("/by-keyword/:keyword")
-  @ApiParam({ name: "keyword", type: "string", required: false })
+  @ApiParam({ name: "keyword", type: "string", required: true })
   findQuestionsByKeyword(@Param("keyword") keyword: string) {
     return this.questionService.findQuestionsWithKeyword(keyword);
+  }
+
+  @Get("/by-area-id/:areaId")
+  @ApiParam({ name: "areaId", type: "int", required: true })
+  findQuestionsByAreaId(@Param("areaId") areaId: number) {
+    return this.questionService.findAllByAreaId(areaId);
   }
 
   @Get(":id")

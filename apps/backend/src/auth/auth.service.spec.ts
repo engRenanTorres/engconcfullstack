@@ -54,7 +54,7 @@ describe("AuthService", () => {
       expect(await authService.validateUser(email, password)).toStrictEqual(
         normalUser
       );
-      expect(userService.findByEmail).toHaveBeenCalledWith(normalUser.email);
+      expect(userService.findByEmailForLogin).toHaveBeenCalledWith(normalUser.email);
       expect(bcrypt.compareSync).toHaveBeenCalledWith(
         password,
         normalUser.password
@@ -74,7 +74,7 @@ describe("AuthService", () => {
       jest.spyOn(bcrypt, "compareSync").mockImplementation(() => false);
 
       expect(await authService.validateUser(email, password)).toBeNull();
-      expect(userService.findByEmail).toHaveBeenCalledWith(normalUser.email);
+      expect(userService.findByEmailForLogin).toHaveBeenCalledWith(normalUser.email);
     });
     it("should return null if the password is wrong", async () => {
       const email = normalUser.email;
@@ -90,7 +90,7 @@ describe("AuthService", () => {
       jest.spyOn(bcrypt, "compareSync").mockImplementation(() => false);
 
       expect(await authService.validateUser(email, password)).toBeNull();
-      expect(userService.findByEmail).toHaveBeenCalledWith(normalUser.email);
+      expect(userService.findByEmailForLogin).toHaveBeenCalledWith(normalUser.email);
       expect(bcrypt.compareSync).toHaveBeenCalledWith(
         password,
         normalUser.password

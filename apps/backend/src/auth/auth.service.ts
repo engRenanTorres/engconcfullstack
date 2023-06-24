@@ -29,7 +29,7 @@ export class AuthService {
   async validateUser(email: string, password: string) {
     let user: User;
     try {
-      user = await this.userService.findByEmail(email);
+      user = await this.userService.findByEmailForLogin(email);
     } catch (error) {
       return null;
     }
@@ -54,7 +54,7 @@ export class AuthService {
 
     let user: User;
     try {
-      user = await this.userService.findById(decodedToken.sub);
+      user = await this.userService.findById(+decodedToken.sub);
     } catch (error) {
       return new UnauthorizedException("Usuário inexistente: " + error.message);
     }*/

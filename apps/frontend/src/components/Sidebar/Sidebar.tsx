@@ -2,19 +2,24 @@ import {
   Bars3Icon,
   HomeIcon,
   ListBulletIcon,
-  PlusCircleIcon,
+  PencilSquareIcon,
   SquaresPlusIcon,
+  UserCircleIcon,
   XMarkIcon,
 } from '@heroicons/react/20/solid';
 import { useCallback, useEffect, useState } from 'react';
 import defaultTWCss from '../../styles/theme';
 import { ItemsGroupTitle, MItem } from './SbItems';
+import useAuth from '../../utils/hooks/useAuth';
+import AuthRoles from '../../helpers/auth-roles.helper';
 
 export default function Sidebar() {
   const location = window.location.pathname;
   const { icons, bgGradient } = defaultTWCss;
   const [selected, setSelected] = useState<string>('Página inicial');
   const [collapsed, setCollapsed] = useState<boolean>(false);
+  const { currentUser } = useAuth();
+  const { rolesStrings, workerRoles } = AuthRoles;
 
   const handleLocation = useCallback(() => {
     setSelected(location);
@@ -55,14 +60,14 @@ export default function Sidebar() {
             handleCollapse();
           }}
         >
-          ADMINS
+          {currentUser ? rolesStrings[currentUser.roles - 1] : 'Visitante'}
           <XMarkIcon className={icons} />
         </button>
       )}
       {!collapsed && (
         <div className="flex-1 items-center mb-12">
           <img
-            className="mx-auto h-14 w-auto"
+            className="mx-auto h-28 w-auto"
             // src={logoImg}
             src="/favicon.svg"
             alt="Your Company"
@@ -70,7 +75,8 @@ export default function Sidebar() {
           <h2 className="text-center  text-blue-100 text-lg">
             Engenharia de Concursos
           </h2>
-          <h3 className="text-center text-blue-100">Simulador de questões</h3>
+          {/* <h3 className="text-center text-blue-100">Simulador de Provas</h3> */}
+          <h3 className="text-center text-blue-100">Versão Beta</h3>
         </div>
       )}
       <menu>
@@ -83,36 +89,41 @@ export default function Sidebar() {
           setSelected={setSelected}
         />
 
-        {!collapsed && <ItemsGroupTitle>licitações </ItemsGroupTitle>}
+        {!collapsed && <ItemsGroupTitle>Questões </ItemsGroupTitle>}
         <MItem
-          to="/bidding"
-          title="Licitação 1"
+          to="/questions"
+          title="Listar"
           icon={<ListBulletIcon className={icons} />}
           collapsed={collapsed}
           selected={selected}
           setSelected={setSelected}
         />
-        <MItem
-          to="/underConstruction"
-          title="Nova licitação"
-          icon={<SquaresPlusIcon className={icons} />}
-          collapsed={collapsed}
-          selected={selected}
-          setSelected={setSelected}
-        />
-        <MItem
-          to="/underConstruction"
-          title="Histórico"
-          icon={<SquaresPlusIcon className={icons} />}
-          collapsed={collapsed}
-          selected={selected}
-          setSelected={setSelected}
-        />
+        {currentUser && workerRoles.includes(currentUser.roles) && (
+          <>
+            <MItem
+              to="/create-questions"
+              title="Nova Questão"
+              icon={<SquaresPlusIcon className={icons} />}
+              collapsed={collapsed}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <MItem
+              to="/underConstruction"
+              title="Editar Questões"
+              icon={<PencilSquareIcon className={icons} />}
+              collapsed={collapsed}
+              selected={selected}
+              setSelected={setSelected}
+            />
+          </>
+        )}
         {!collapsed && <ItemsGroupTitle>sobre </ItemsGroupTitle>}
         <MItem
           to="/underConstruction"
           title="Sobre nós"
-          icon={<PlusCircleIcon className={icons} />}
+          icon={<UserCircleIcon className={icons} />}
           collapsed={collapsed}
           selected={selected}
           setSelected={setSelected}

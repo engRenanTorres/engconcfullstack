@@ -19,7 +19,7 @@ export class User {
   cnpj: string;
   @Column({ name: `email`, nullable: false, unique: true })
   email: string;
-  @Column({ name: "password", nullable: true })
+  @Column({ name: "password", nullable: true, select: false })
   password: string;
   @Column({
     name: "roles",

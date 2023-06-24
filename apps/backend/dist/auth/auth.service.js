@@ -33,7 +33,7 @@ let AuthService = class AuthService {
     async validateUser(email, password) {
         let user;
         try {
-            user = await this.userService.findByEmail(email);
+            user = await this.userService.findByEmailForLogin(email);
         }
         catch (error) {
             return null;

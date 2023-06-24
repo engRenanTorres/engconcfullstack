@@ -50,14 +50,18 @@ export class UsersService implements OnModuleInit {
     return user;
   }
 
-  async findByEmail(email: string): Promise<User> | null {
-    const user = await this.usersRepository.findOneBy({ email: email });
+  async findByEmailForLogin(email: string): Promise<User> | null {
+    const query = this.usersRepository.createQueryBuilder('user');
+    query.where({ email: email });
+    query.addSelect('user.password'); // show the hidden column
+    const user = await query.getOne();
+    
     try {
       this.checkIfUserExiste(user, email);
     } catch (error) {
       throw new NotFoundException(error.message);
     }
-    return await this.usersRepository.findOneBy({ email: email });
+    return user;
   }
 
   async create(createUserDTO: CreateUserDto) {

@@ -52,15 +52,18 @@ let UsersService = class UsersService {
         this.checkIfUserExiste(user, String(id));
         return user;
     }
-    async findByEmail(email) {
-        const user = await this.usersRepository.findOneBy({ email: email });
+    async findByEmailForLogin(email) {
+        const query = this.usersRepository.createQueryBuilder('user');
+        query.where({ email: email });
+        query.addSelect('user.password');
+        const user = await query.getOne();
         try {
             this.checkIfUserExiste(user, email);
         }
         catch (error) {
             throw new exceptions_1.NotFoundException(error.message);
         }
-        return await this.usersRepository.findOneBy({ email: email });
+        return user;
     }
     async create(createUserDTO) {
         try {
