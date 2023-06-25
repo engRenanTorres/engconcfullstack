@@ -1,5 +1,7 @@
-const Dashboard: React.FC = () => {
+import { ReactElement } from 'react';
+
+function Dashboard(): ReactElement {
   return <div>Dashboard</div>;
-};
+}
 
 export default Dashboard;

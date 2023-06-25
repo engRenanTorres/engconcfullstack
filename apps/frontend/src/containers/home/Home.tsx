@@ -10,7 +10,6 @@ function HomeContent() {
       </p>
 
       <p className="lg:text-justify py-5">
-        {' '}
         Este é um projeto independente que pretende contribuir com a engenharia.
         Não só para concurseiros, mas para todos que queiram praticar seus
         conhecimentos.
@@ -29,11 +28,10 @@ function HomeContent() {
       </p>
       <blockquote>
         <p className="text-center py-5 italic">
-          {' '}
           {/* eslint-disable-next-line react/no-unescaped-entities  */}
           "Coragem! Mais vale errar, se arrebentando, do que poupar-se
           {/* eslint-disable-next-line react/no-unescaped-entities  */}
-          para nada."{' '}
+          para nada."
         </p>
       </blockquote>
       <p className="text-end">Darcy Ribeiro.</p>

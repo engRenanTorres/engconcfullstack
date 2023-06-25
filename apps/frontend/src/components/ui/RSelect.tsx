@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,23 +9,15 @@ interface Props {
   bg?: string;
   link?: boolean;
   href?: string;
-  target?: string;
-  children?: React.ReactNode;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  submitType?: boolean;
 }
 
-function TButton({
+function RSelect({
   color = 'black',
   bg = 'neutral',
   to = '',
   circle = false,
   href = '',
   link = false,
-  target = '_blank',
-  children = '',
-  onClick = () => console.log('set button action'),
-  submitType = false,
 }: Props): ReactElement<Props> {
   const classes = [
     'flex',
@@ -91,29 +84,28 @@ function TButton({
   }
   return (
     <div>
-      {!!href && (
-        <a href={href} className={classes.join(' ')} target={target}>
-          {children}
-        </a>
-      )}
-      {!!to && (
-        <Link to={to} className={classes.join(' ')}>
-          {children}
-        </Link>
-      )}
-      {!to && !href && (
-        <button
-          className={`flex py-2 justify-center items-center min-w-full rounded-lg bg-${bg}-200 hover:bg-${bg}-400 dark:bg-${bg}-800 dark:hover:bg-${bg}-600 ${classes.join(
-            ' '
-          )}`}
-          type={submitType ? 'submit' : 'button'}
-          onClick={onClick}
+      <div className="sm:col-span-3">
+        <label
+          htmlFor="country"
+          className={`block text-sm font-medium leading-6 bg-${bg}-200 hover:bg-${bg}-400 dark:bg-${bg}-800 dark:hover:bg-${bg}-600 text-gray-900`}
         >
-          {children}
-        </button>
-      )}
+          Country
+        </label>
+        <div className="mt-2">
+          <select
+            id="country"
+            name="country"
+            autoComplete="country-name"
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+          >
+            <option>United States3</option>
+            <option>Canada</option>
+            <option>Mexico</option>
+          </select>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default TButton;
+export default RSelect;

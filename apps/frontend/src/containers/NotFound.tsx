@@ -1,6 +1,7 @@
+import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 
-const NotFound: React.FC = () => {
+function NotFound(): ReactElement {
   // if (!currentUser) return router.push('/');
   return (
     <div className="mb-2 px-2 text-center flex-1 justify-center">
@@ -18,6 +19,6 @@ const NotFound: React.FC = () => {
       </section>
     </div>
   );
-};
+}
 
 export default NotFound;
