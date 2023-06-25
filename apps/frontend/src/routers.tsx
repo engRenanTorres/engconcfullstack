@@ -21,7 +21,10 @@ export default function AppRouter() {
           <Route path="/" element={<Home />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignupPage />} />
-          <Route path="underConstruction" element={<UnderConstructionPage />} />
+          <Route
+            path="under-construction"
+            element={<UnderConstructionPage />}
+          />
           <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </AuthProvider>

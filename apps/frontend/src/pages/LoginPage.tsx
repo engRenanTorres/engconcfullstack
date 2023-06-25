@@ -1,16 +1,17 @@
 import { FormikValues } from 'formik';
-import { useCallback } from 'react';
+import { ReactElement, useCallback } from 'react';
 import Login from '../containers/users/Login';
 import SimplePageLayout from '../components/layout/SimpleLayout';
 import useAuth from '../utils/hooks/useAuth';
 
-export const LoginPage: React.FC = () => {
+// eslint-disable-next-line import/prefer-default-export
+export function LoginPage(): ReactElement {
   const { signin } = useAuth();
 
   const handleLogin = useCallback(
     async (values: FormikValues) => {
       try {
-        console.log(values);
+        // console.log(values);
         signin(values.email, values.password);
       } catch (error) {
         alert(error);
@@ -24,4 +25,4 @@ export const LoginPage: React.FC = () => {
       <Login handleLogin={handleLogin} />
     </SimplePageLayout>
   );
-};
+}

@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { ReactElement } from 'react';
 import TButton from '../../components/ui/TButton';
 
 interface FormikValues {
@@ -11,7 +13,7 @@ interface LoginProps {
   handleLogin: (values: FormikValues) => void;
 }
 
-const Login: React.FC<LoginProps> = ({ handleLogin }: LoginProps) => {
+function Login({ handleLogin }: LoginProps): ReactElement<LoginProps> {
   const validationSchema = Yup.object({
     email: Yup.string()
       .email('Email inválido')
@@ -66,7 +68,7 @@ const Login: React.FC<LoginProps> = ({ handleLogin }: LoginProps) => {
               </label>
               <div className="text-sm">
                 <a
-                  href="#"
+                  href="/under-construction"
                   className="font-semibold text-indigo-600 dark:text-purple-300 hover:text-indigo-500"
                 >
                   Esqueceu seu password?
@@ -108,7 +110,7 @@ const Login: React.FC<LoginProps> = ({ handleLogin }: LoginProps) => {
       <p className="mt-10 text-center text-sm">
         Não é membro?{' '}
         <a
-          href="#"
+          href="/signup"
           className="font-semibold leading-6 text-indigo-600 dark:text-purple-300 hover:text-indigo-500"
         >
           Cadastre-se aqui
@@ -116,6 +118,6 @@ const Login: React.FC<LoginProps> = ({ handleLogin }: LoginProps) => {
       </p>
     </div>
   );
-};
+}
 
 export default Login;
