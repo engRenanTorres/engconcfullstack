@@ -19,9 +19,8 @@ import { Roles } from "../decorators/roles.decorator";
 import { Role } from "../users/entities/role.enum";
 import { ReqHeaders } from "../auth/models/req-headers.model";
 import { PageableQueries } from "./queries/pageable-queries.dto";
-import { Question } from "./entities/question.entity";
 
-@Controller("question")
+@Controller("api/question")
 @ApiTags("Questions")
 export class QuestionController {
   constructor(private readonly questionService: QuestionService) {}
@@ -49,6 +48,18 @@ export class QuestionController {
   @ApiQuery({ name: "limit", type: "int", required: false })
   findAllPageable(@Query() { page, limit }: PageableQueries) {
     return this.questionService.findAllPageable(page, limit);
+  }
+
+  @Get("/countx")
+  @ApiQuery({ name: "areaid", type: "int", required: false })
+  getCounAllPerArea(@Query('areaid') areaid: number) {
+    console.log(areaid);
+    return this.questionService.getCountAllPerArea(areaid);
+  }
+
+  @Get("/count")
+  findCountAllQuestion() {
+    return this.questionService.getQtdTotalQuestions();
   }
 
   @Get("/by-keyword/:keyword")

@@ -18,7 +18,6 @@ async function bootstrap() {
         .setTitle("Api backend do Engenharia de concursos")
         .setDescription("Api para backend")
         .setVersion("1.0")
-        .addServer("api")
         .addBearerAuth({
         description: `Insira seu token aqui. Não precisa de Bearer.`,
         name: "Authorization",
@@ -40,7 +39,6 @@ async function bootstrap() {
     app.useGlobalInterceptors(new unauthorized_interceptor_1.UnauthorizedInterceptor());
     app.useGlobalInterceptors(new notfound_interceptor_1.NotFoundInterceptor());
     app.useGlobalInterceptors(new database_interceptor_1.DatabaseInterceptor());
-    app.setGlobalPrefix("api");
     await app.listen(process.env.APP_PORT);
 }
 bootstrap();

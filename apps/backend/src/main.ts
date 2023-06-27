@@ -21,7 +21,7 @@ async function bootstrap() {
     .setTitle("Api backend do Engenharia de concursos")
     .setDescription("Api para backend")
     .setVersion("1.0")
-    .addServer("api")
+    //.addServer("api")
     .addBearerAuth(
       {
         // I was also testing it without prefix 'Bearer ' before the JWT
@@ -54,7 +54,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new UnauthorizedInterceptor());
   app.useGlobalInterceptors(new NotFoundInterceptor());
   app.useGlobalInterceptors(new DatabaseInterceptor());
-  app.setGlobalPrefix("api");
+  //app.setGlobalPrefix("api");
   await app.listen(process.env.APP_PORT);
 }
 bootstrap();

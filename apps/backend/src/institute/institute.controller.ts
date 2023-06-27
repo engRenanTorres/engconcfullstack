@@ -13,7 +13,7 @@ import { UpdateInstituteDto } from "./dto/update-institute.dto";
 import { ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Institute")
-@Controller("institute")
+@Controller("api/institute")
 export class InstituteController {
   constructor(private readonly instituteService: InstituteService) {}
 

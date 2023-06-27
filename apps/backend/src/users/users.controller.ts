@@ -33,7 +33,7 @@ import {
 } from "./swagger/index-users.swagger";
 import { MessagesHelper } from "../helpers/message.helper";
 
-@Controller("users")
+@Controller("api/users")
 @ApiTags("Users")
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}

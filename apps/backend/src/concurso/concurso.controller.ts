@@ -13,7 +13,7 @@ import { UpdateConcursoDto } from "./dto/update-concurso.dto";
 import { ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Concurso")
-@Controller("concurso")
+@Controller("api/concurso")
 export class ConcursoController {
   constructor(private readonly concursoService: ConcursoService) {}
 

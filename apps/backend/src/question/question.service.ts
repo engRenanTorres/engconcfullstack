@@ -102,8 +102,8 @@ export class QuestionService implements OnModuleInit {
     return await this.questionRepository.find();
   }
 
-  async findTotalQuestions(): Promise<number> {
-    return (await this.questionRepository.find()).length;
+  async getQtdTotalQuestions(): Promise<number> {
+    return await this.questionRepository.createQueryBuilder('question').select().getCount();
   }
 
   async findAllByAreaId(areaId: number): Promise<Question[]> {
@@ -120,6 +120,14 @@ export class QuestionService implements OnModuleInit {
     query.orWhere("concurso.name LIKE :keyword", { keyword: `%${keyword}%` });
 
     return await query.getMany();
+  }
+  async getCountAllPerArea(area: number): Promise<number> {
+    const query = this.questionRepository.createQueryBuilder("question");
+    query.leftJoinAndSelect("question.subject","subject");
+    query.leftJoinAndSelect("subject.area","area");
+    query.where("area.id LIKE :area", { area: `%${area}%` });
+
+    return await query.getCount();
   }
 
   async findAllPageable(
