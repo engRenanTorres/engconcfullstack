@@ -1,10 +1,8 @@
 /* eslint-disable import/no-cycle */
 import { useNavigate } from 'react-router-dom';
-import { ContactsComp } from '../../components/ContactsComp';
-import HomeSideContent from '../../containers/home/HomeSideContent';
-import DefaultLayout from '../../components/layout/DefaultLayout';
 import QuestionsList from '../../containers/questions/CreateQuestions';
 import axiosClient from '../../utils/httpClient/axiosClient';
+import QuestionLayout from '../../components/layout/QuestionLayout';
 
 export interface FormikCreateQuestionValues {
   question: string;
@@ -25,7 +23,7 @@ export interface FormikCreateQuestionValues {
 function CreateQuestions() {
   const navigate = useNavigate();
   const handleSubmit = async (values: FormikCreateQuestionValues) => {
-    console.log(values);
+    // console.log(values);
     const alteratives = [];
     alteratives.push({
       choice: values.alternative1 === '' ? 'Correta' : values.alternative1,
@@ -58,16 +56,12 @@ function CreateQuestions() {
     }
   };
   return (
-    <DefaultLayout
+    <QuestionLayout
       jumbotronTitle="Engenharia de concursos"
       jumbotronSubtitle="Simulador de concursos de engenharia"
-      sideContent={HomeSideContent}
-      sideContent2={
-        <ContactsComp linkedin="https://www.linkedin.com/in/eng-renan-torres/" />
-      }
     >
       <QuestionsList handleSubmit={handleSubmit} />
-    </DefaultLayout>
+    </QuestionLayout>
   );
 }
 

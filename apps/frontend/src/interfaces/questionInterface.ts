@@ -10,9 +10,10 @@ export interface Question {
   subject: Subject;
   question: string;
   answer: 'A' | 'B' | 'C' | 'D' | 'E' | 'V' | 'F';
+  questionsChoices: { id: number; choice: string }[];
   tip: string;
   createdBy: User;
-  createdAt: Date;
-  lastUpdateBy: User;
-  lastUpdateAt: Date;
+  createdAt: string;
+  lastUpdateBy?: User;
+  lastUpdateAt?: string;
 }

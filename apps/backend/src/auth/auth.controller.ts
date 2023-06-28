@@ -33,7 +33,7 @@ class LoginResponse {
   token: string;
 }
 
-@Controller("auth")
+@Controller("api/auth")
 @ApiTags("Auth")
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -53,6 +53,7 @@ export class AuthController {
     @Body() signinDTO: SigninDTO,
     @Req() req: ReqLocal
   ): Promise<object> {
+    
     return await this.authService.login(req.user);
   }
 

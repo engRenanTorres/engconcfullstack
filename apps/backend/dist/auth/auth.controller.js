@@ -81,7 +81,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "session", null);
 AuthController = __decorate([
-    (0, common_1.Controller)("auth"),
+    (0, common_1.Controller)("api/auth"),
     (0, swagger_1.ApiTags)("Auth"),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);

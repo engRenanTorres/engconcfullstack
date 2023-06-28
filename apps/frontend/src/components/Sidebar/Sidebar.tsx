@@ -101,7 +101,7 @@ export default function Sidebar() {
         {currentUser && workerRoles.includes(currentUser.roles) && (
           <>
             <MItem
-              to="/create-questions"
+              to="/questions/create"
               title="Nova Questão"
               icon={<SquaresPlusIcon className={icons} />}
               collapsed={collapsed}

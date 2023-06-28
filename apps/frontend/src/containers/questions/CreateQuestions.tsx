@@ -136,7 +136,6 @@ export default function QuestionsList({ handleSubmit }: CreateProps) {
                     name="question"
                     rows={3}
                     className="block w-full text-black rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    defaultValue=""
                   />
                   <ErrorMessage
                     name="question"
@@ -199,7 +198,7 @@ export default function QuestionsList({ handleSubmit }: CreateProps) {
                       as={alternatives === 2 ? 'input' : 'textarea'}
                       name="alternative1"
                       id="alternative1"
-                      placeholder="Correta"
+                      placeholder={alternatives === 2 ? 'Correta' : ''}
                       className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset text-black ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                     <ErrorMessage
@@ -222,7 +221,7 @@ export default function QuestionsList({ handleSubmit }: CreateProps) {
                       as={alternatives === 2 ? 'input' : 'textarea'}
                       name="alternative2"
                       id="alternative2"
-                      placeholder="Errada"
+                      placeholder={alternatives === 2 ? 'Errada' : ''}
                       className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset text-black ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                     <ErrorMessage
@@ -248,7 +247,6 @@ export default function QuestionsList({ handleSubmit }: CreateProps) {
                       name="alternative3"
                       rows={3}
                       className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset text-black ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      defaultValue=""
                     />
                     <ErrorMessage
                       name="alternative3"
@@ -273,7 +271,6 @@ export default function QuestionsList({ handleSubmit }: CreateProps) {
                       name="alternative4"
                       rows={3}
                       className="block w-full text-black rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      defaultValue=""
                     />
                     <ErrorMessage
                       name="alternative4"
@@ -298,7 +295,6 @@ export default function QuestionsList({ handleSubmit }: CreateProps) {
                       name="alternative5"
                       rows={3}
                       className="block w-full text-black rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      defaultValue=""
                     />
                     <ErrorMessage
                       name="alternative5"
@@ -537,7 +533,6 @@ export default function QuestionsList({ handleSubmit }: CreateProps) {
                     name="tip"
                     rows={3}
                     className="block w-full text-black rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-800 placeholder:text-gray-700 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    defaultValue=""
                   />
                   <ErrorMessage
                     name="tip"
