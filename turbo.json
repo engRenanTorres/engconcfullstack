@@ -11,6 +11,10 @@
       "outputs": [
         "dists/**"
       ]
+    },
+    "test": {},
+    "test:watch": {
+      "cache": false
     }
   } 
 }

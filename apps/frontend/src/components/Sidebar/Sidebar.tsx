@@ -76,7 +76,7 @@ export default function Sidebar() {
             Engenharia de Concursos
           </h2>
           {/* <h3 className="text-center text-blue-100">Simulador de Provas</h3> */}
-          <h3 className="text-center text-blue-100">Versão Beta</h3>
+          <h3 className="text-center text-blue-100">Under construction V.0.1.0</h3>
         </div>
       )}
       <menu>

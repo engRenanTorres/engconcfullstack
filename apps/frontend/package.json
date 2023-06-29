@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint --ext .js,.cjs,.ts,.tsx .",
     "lint:fix": "eslint --ext .js,.cjs,.ts,.tsx . --fix",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

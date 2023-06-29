@@ -6,7 +6,9 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "start": "node apps/backend/dist/main",
-    "format": "turbo run format"
+    "format": "turbo run format",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch"
   },
   "workspaces": [
     "apps/*"

@@ -149,7 +149,7 @@ describe("UsersService", () => {
       };
       //@ts-expect-error defined part of methods
       service["usersRepository"] = mockUserRepository;
-      const user = await service.findById(`${id}`);
+      const user = await service.findById(id);
       expect(mockUserRepository.findOneBy).toHaveBeenCalled();
       expect(expectOutputUser).toStrictEqual(user);
     });
@@ -164,7 +164,7 @@ describe("UsersService", () => {
       service["usersRepository"] = mockUserRepository;
 
       async function findbyId() {
-        await service.findById(`${id}`);
+        await service.findById(id);
       }
 
       await expect(findbyId()).rejects.toThrow(NotFoundException);

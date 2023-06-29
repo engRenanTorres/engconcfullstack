@@ -43,7 +43,7 @@ describe("UsersController", () => {
         .spyOn(service, "findById")
         .mockImplementation(() => Promise.resolve(normalUser));
 
-      expect(await controller.findById(String(normalUser.id))).toBe(normalUser);
+      expect(await controller.findById(normalUser.id)).toBe(normalUser);
     });
   });
   describe("create", () => {
