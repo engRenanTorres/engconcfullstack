@@ -8,14 +8,15 @@ import { StudyAreaService } from "../study-area/study-area.service";
 @Injectable()
 export class SubjectService {
   constructor(
-    @Inject("SUBJECT_REPOSITORY")
-    private readonly subjectResposity: Repository<Subject>,
     private readonly studyAreaService: StudyAreaService
   ) {}
+
+  @Inject("SUBJECT_REPOSITORY")
+  private readonly subjectRepository: Repository<Subject>
   private logger: Logger = new Logger("SubjectService");
 
   async onModuleInit(): Promise<void> {
-    const subjects = await this.subjectResposity.find();
+    const subjects = await this.subjectRepository.find();
     if (subjects.length === 0) {
       const studyArea = await this.studyAreaService.findById(1);
       const studyArea2 = await this.studyAreaService.findById(2);
@@ -41,20 +42,20 @@ export class SubjectService {
   }
 
   async findByAreaId(areaId: number) {
-    return this.subjectResposity.find({where: {area: {id: areaId}}, relations: {area: true}});
+    return this.subjectRepository.find({where: {area: {id: areaId}}, relations: {area: true}});
   }
 
   async create(createSubjectDto: CreateSubjectDto) {
-    const subject = this.subjectResposity.create(createSubjectDto);
-    return await this.subjectResposity.save(subject);
+    const subject = this.subjectRepository.create(createSubjectDto);
+    return await this.subjectRepository.save(subject);
   }
 
   async findAll(): Promise<Subject[]> {
-    return await this.subjectResposity.find();
+    return await this.subjectRepository.find();
   }
 
   async findById(id: number): Promise<Subject> {
-    const subject = await this.subjectResposity.findOneBy({ id: id });
+    const subject = await this.subjectRepository.findOneBy({ id: id });
     if (!subject) {
       throw new NotFoundException("subject not found with id: " + id);
     }

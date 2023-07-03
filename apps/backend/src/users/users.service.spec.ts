@@ -63,7 +63,7 @@ describe("UsersService", () => {
     });
   });
   describe("Updating user", () => {
-    it.only("should call save user after update", async () => {
+    it("should call save user after update", async () => {
       const updateeUserDTO: UpdateUserDto = {
         name: "Usuario Teste",
         cnpj: "12345678912",
