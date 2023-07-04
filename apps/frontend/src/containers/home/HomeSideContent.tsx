@@ -12,9 +12,6 @@ const HomeSideContent: ReactNode = (
           questões dos concursos e bancas consagrados em cada área.
         </em>
       </p>
-      <p className="mb-0">
-        <em>sem malesuada magna</em>
-      </p>
     </div>
   </aside>
 );

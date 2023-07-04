@@ -5,7 +5,7 @@ import useAuth from '../../utils/hooks/useAuth';
 import defaultTWCss from '../../styles/theme';
 
 const userNavigation = [
-  { name: 'Licitação 1', href: 'bidding' },
+  { name: 'Configurações', href: '/underConstruction' },
   { name: 'Sair', href: '#' },
 ];
 
