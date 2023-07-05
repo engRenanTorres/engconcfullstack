@@ -24,21 +24,26 @@ export class ConcursoService implements OnModuleInit {
   async onModuleInit(): Promise<void> {
     const concurso = await this.concursoRepository.find();
     if (concurso.length === 0) {
-      const institute = await this.instituteService.findById(1);
-      const conc1: CreateConcursoDto = {
-        name: "Petrobras",
-        about: "Top",
-        year: 2023,
-        institute: institute,
-      };
-      const conc2: CreateConcursoDto = {
-        name: "Fundação Saúde do Rio de Janeiro",
-        about: "00000000002",
-        year: 2022,
-        institute: institute,
-      };
-      await this.create(conc1);
-      await this.create(conc2);
+      try {
+        const institute = await this.instituteService.findById(1);
+        const conc1: CreateConcursoDto = {
+          name: "Petrobras",
+          about: "Top",
+          year: 2023,
+          institute: institute,
+        };
+        const conc2: CreateConcursoDto = {
+          name: "Fundação Saúde do Rio de Janeiro",
+          about: "00000000002",
+          year: 2022,
+          institute: institute,
+        };
+
+          await this.create(conc1);
+          await this.create(conc2);
+      } catch (e){
+        this.logger.error('Error to creace default concursos');
+      }
       this.logger.log("default concurso has been created");
       return;
     }

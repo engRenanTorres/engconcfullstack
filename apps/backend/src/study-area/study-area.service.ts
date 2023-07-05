@@ -24,11 +24,11 @@ export class StudyAreaService implements OnModuleInit {
       this.logger.log("adm user has been created");
       const adm: CreateStudyAreaDto = {
         name: "Engenharia Civil",
-        about: "IamAdm123",
+        about: "Área especializada na construção civil",
       };
       const normal: CreateStudyAreaDto = {
         name: "Engenharia de Segurança do Trabalho",
-        about: "00000000002",
+        about: "Área especializada na segurança, saúde e qualidade do trabalhador industrial.",
       };
       await this.create(adm);
       await this.create(normal);

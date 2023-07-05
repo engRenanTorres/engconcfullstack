@@ -18,7 +18,7 @@ import { UsersService } from "../users/users.service";
 import extractAuthUser from "../helpers/get-auth-user.helper";
 
 @Injectable()
-export class QuestionService implements OnModuleInit {
+export class QuestionService {
   constructor(
     @Inject("QUESTION_REPOSITORY")
     private readonly questionRepository: Repository<Question>,
@@ -29,47 +29,6 @@ export class QuestionService implements OnModuleInit {
   ) {}
 
   private logger: Logger = new Logger("QuestionService");
-
-  async onModuleInit(): Promise<void> {
-    /*const questions = await this.questionRepository.find();
-    if (questions.length === 0) {
-      this.logger.log("default question has been created");
-      const question1: CreateQuestionDto = {
-        question: "Seria eu renan?",
-        answer: Answer.V,
-        levelId: 1,
-        concursoId: 1,
-        subjectId: 1,
-        tip: "questao muito facil",
-        questionsChoices: [
-          { choice: "A) Certo" },
-          { choice: "B) Errado" },
-        ],
-      };
-      const question2: CreateQuestionDto = {
-        question: "Quem é o cara mais legal?",
-        tip: "questao obvia.",
-        answer: Answer.A,
-        levelId: 1,
-        concursoId: 1,
-        subjectId: 1,
-        questionsChoices: [
-          { choice: "A) Renan" },
-          { choice: "B) Guerra" },
-          { choice: "C) Guerra" },
-          { choice: "D) Peçanha" },
-          { choice: "E) Noira" },
-        ],
-      };
-      await this.create(question1);
-      await this.create(question2);
-      return;
-    }
-    this.logger.log(
-      "Dont need to create quesitons. questions.length = " + questions.length
-    );
-    return;*/
-  }
 
   async create(
     createQuestionDto: CreateQuestionDto,

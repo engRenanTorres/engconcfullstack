@@ -18,22 +18,26 @@ export class SubjectService {
   async onModuleInit(): Promise<void> {
     const subjects = await this.subjectRepository.find();
     if (subjects.length === 0) {
-      const studyArea = await this.studyAreaService.findById(1);
-      const studyArea2 = await this.studyAreaService.findById(2);
-      const construcao: CreateSubjectDto = {
-        name: "Construção Civil",
-        about: "Área de obras civis",
-        area: studyArea,
-      };
-      const nr12: CreateSubjectDto = {
-        name: "NR12",
-        about: "Segurança em Máquinas",
-        area: studyArea2,
-      };
-      this.logger.log("subjects has been created");
-      await this.create(construcao);
-      await this.create(nr12);
-      return;
+      try {
+        const studyArea = await this.studyAreaService.findById(1);
+        const studyArea2 = await this.studyAreaService.findById(2);
+        const construcao: CreateSubjectDto = {
+          name: "Construção Civil",
+          about: "Área de obras civis",
+          area: studyArea,
+        };
+        const nr12: CreateSubjectDto = {
+          name: "NR12",
+          about: "Segurança em Máquinas",
+          area: studyArea2,
+        };
+        this.logger.log("subjects has been created");
+        await this.create(construcao);
+        await this.create(nr12);
+        return;
+      } catch (e){
+        this.logger.error('Error to creace default subject');
+      }
     }
     this.logger.log(
       "Dont need to create subjects. subjects.length = " + subjects.length
