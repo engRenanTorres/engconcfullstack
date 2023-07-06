@@ -2,16 +2,18 @@
 > api-eng-concursos@0.0.1 test
 > jest
 
-PASS src/app.controller.spec.ts (5.041 s)
-PASS src/users/dto/create-user.dto.spec.ts (5.156 s)
-PASS src/users/users.controller.spec.ts (5.313 s)
-PASS src/users/users.service.spec.ts (5.508 s)
-PASS src/study-area/study-area.service.spec.ts (5.45 s)
-PASS src/auth/auth.service.spec.ts (5.694 s)
-PASS src/auth/auth.controller.spec.ts (5.886 s)
+PASS src/subject/subject.service.spec.ts (6.517 s)
+PASS src/subject/users.controller.spec.ts (6.581 s)
+PASS src/users/users.service.spec.ts (6.734 s)
+PASS src/auth/auth.service.spec.ts (6.786 s)
+PASS src/study-area/study-area.service.spec.ts (6.812 s)
+PASS src/app.controller.spec.ts
+PASS src/users/users.controller.spec.ts (7.317 s)
+PASS src/users/dto/create-user.dto.spec.ts
+PASS src/auth/auth.controller.spec.ts (7.421 s)
 
-Test Suites: 7 passed, 7 total
-Tests:       10 skipped, 25 passed, 35 total
+Test Suites: 9 passed, 9 total
+Tests:       5 skipped, 44 passed, 49 total
 Snapshots:   0 total
-Time:        6.243 s
+Time:        7.844 s
 Ran all test suites.

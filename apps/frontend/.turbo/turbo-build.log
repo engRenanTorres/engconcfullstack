@@ -4,10 +4,10 @@
 
 vite v4.3.9 building for production...
 transforming...
-✓ 643 modules transformed.
+✓ 684 modules transformed.
 rendering chunks...
 computing gzip size...
-dist/index.html                   0.54 kB │ gzip:   0.35 kB
+dist/index.html                   0.54 kB │ gzip:   0.36 kB
 dist/assets/index-6a4988b8.css   26.22 kB │ gzip:   5.53 kB
-dist/assets/index-37c50e30.js   345.89 kB │ gzip: 110.65 kB
-✓ built in 1.67s
+dist/assets/index-6cba4f8f.js   386.11 kB │ gzip: 120.94 kB
+✓ built in 1.81s

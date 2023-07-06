@@ -5,4 +5,9 @@ apps/frontend/dist
 dist
 apps/backend/dist
 apps/backend/dist/tsconfig.build.tsbuildinfo
-apps/backend/dist/tsconfig.build.tsbuildinfo
+apps/frontend/.turbo/turbo-build.log
+apps/frontend/.turbo/turbo-test.log
+apps/backend/.turbo/turbo-test.log
+apps/backend/.turbo/turbo-build.log
+apps/backend/.tsbuildinfo
+apps/frontend/.env

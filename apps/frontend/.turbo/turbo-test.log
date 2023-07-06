@@ -8,17 +8,17 @@
 stdout | src/containers/users/Login.spec.tsx > LoginForm > should show error after blur inputs with wrong params
 set button action
 
- ✓ src/containers/users/Signup.spec.tsx  (5 tests) 584ms
 stdout | src/containers/users/Login.spec.tsx > LoginForm > should not submit when have errors inside the inputs
 set button action
 
 stdout | src/containers/users/Login.spec.tsx > LoginForm > should submit when get the right params
 set button action
 
- ✓ src/containers/users/Login.spec.tsx  (5 tests) 603ms
+ ✓ src/containers/users/Signup.spec.tsx  (5 tests) 363ms
+ ✓ src/containers/users/Login.spec.tsx  (5 tests) 369ms
 
  Test Files  2 passed (2)
       Tests  10 passed (10)
-   Start at  20:46:54
-   Duration  2.28s (transform 169ms, setup 302ms, collect 603ms, tests 1.19s, environment 935ms, prepare 208ms)
+   Start at  18:10:25
+   Duration  1.56s (transform 248ms, setup 365ms, collect 505ms, tests 732ms, environment 797ms, prepare 188ms)
 
