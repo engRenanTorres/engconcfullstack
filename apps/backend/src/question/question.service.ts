@@ -92,11 +92,15 @@ export class QuestionService {
   async findAllPageable(
     page: number = 1,
     limit: number = 10
-  ): Promise<Question[]> {
-    return await this.questionRepository.find({
+  ) {
+    const questionsLength = await this.questionRepository.count();
+    const selectedQuestions = [
+      ...await this.questionRepository.find({
       take: limit,
-      skip: (page - 1) * limit,
-    });
+      skip: (page) * limit,
+    })];
+    return {nextPage: (page) * limit < questionsLength ? ++page : null,
+      questions: selectedQuestions};
   }
 
   async findOne(id: number): Promise<Question> {
