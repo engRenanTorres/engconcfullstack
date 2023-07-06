@@ -4,3 +4,5 @@ apps/frontend/dist
 .env
 dist
 apps/backend/dist
+apps/backend/dist/tsconfig.build.tsbuildinfo
+apps/backend/dist/tsconfig.build.tsbuildinfo
