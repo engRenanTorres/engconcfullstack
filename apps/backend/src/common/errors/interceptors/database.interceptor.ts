@@ -14,7 +14,7 @@ export class DatabaseInterceptor implements NestInterceptor {
     return next.handle().pipe(
       catchError((error) => {
         if (error instanceof DataBaseError) {
-          if (error.code === 11000) {
+          if (error?.code?.startsWith('ER_')) {
             throw new ConflictException(error.message);
           } else throw error;
         } else throw error;

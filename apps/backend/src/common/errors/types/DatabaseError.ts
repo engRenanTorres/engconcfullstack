@@ -1,5 +1,5 @@
 export class DataBaseError extends Error {
-  constructor(public readonly message: string, public readonly code: number) {
+  constructor(public readonly message: string, public readonly code: string) {
     super();
   }
 }

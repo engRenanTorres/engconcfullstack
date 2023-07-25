@@ -9,7 +9,7 @@ export const questions = [
     subject: 'Previdência',
     question: 'A definição de natureza da lesão, segundo a NBR 14.280, é',
     alternatives: [
-      '(A)Qualquer dyear sofrido pelo organismo humyear, como consequência de acidente do trabalho.',
+      '(A)Qualquer dano sofrido pelo organismo humano, como consequência de acidente do trabalho.',
       '(B)Expressão que identifica a lesão, segundo suas características principais.',
       '(C)Indicação da sede da lesão.',
       '(D)Lesão que se manifesta no momento do acidente.',
@@ -36,7 +36,7 @@ export const questions = [
       '(E)A-IV/B-III/D-II',
     ],
     answer: 'B',
-    tip: 'Classe A = Materiais combustíveis sólidos (Extintor mais recomendado Água Pressurizada-AP pois resfria e abafa), \n Classe B = Materiais combustíveis líquidos (Extintor mais recomendado Espuma pois abafa o fogo fazendo uma camada entre o líquido e o ar), \n Classe C = Ignição elétrica (Extintor mais recomendado é o de CO2 pois retira o comburuente/oxigênio sem muitos dyears aos equipamentos), \n Classe D = Metais Pirofóricos (Extintor mais recomendado é o de pó químico).',
+    tip: 'Classe A = Materiais combustíveis sólidos (Extintor mais recomendado Água Pressurizada-AP pois resfria e abafa), \n Classe B = Materiais combustíveis líquidos (Extintor mais recomendado Espuma pois abafa o fogo fazendo uma camada entre o líquido e o ar), \n Classe C = Ignição elétrica (Extintor mais recomendado é o de CO2 pois retira o comburuente/oxigênio sem muitos danos aos equipamentos), \n Classe D = Metais Pirofóricos (Extintor mais recomendado é o de pó químico).',
   },
   {
     id: 3,
@@ -87,7 +87,7 @@ export const questions = [
     year: 2010,
     subject: 'NR15',
     question:
-      'Considere as afirmativas abaixo: \n I.A dose média de radiação natural absorvida pela população mundial é  de 2,6 Gy x 10^3 x year^-1, isto é, 2,6 mGy por year. \n II. Radiação gama é do tipo partículas. \nIII. Radiação alfa do tipo eletromagnética. \n IV. Radiação nucleares do tipo partículas possuem massa, carga elétrica e velocidade, esta dependente do valor de sua energia. \n V.Ondas eletromagnéticas não possuem massa e se propagam com a velocidade 300.000 km/s, para qualquer valor de sua energia. \n Assinale',
+      'Considere as afirmativas abaixo: \n I.A dose média de radiação natural absorvida pela população mundial é  de 2,6 Gy x 10^3 x ano^-1, isto é, 2,6 mGy por ano. \n II. Radiação gama é do tipo partículas. \nIII. Radiação alfa do tipo eletromagnética. \n IV. Radiação nucleares do tipo partículas possuem massa, carga elétrica e velocidade, esta dependente do valor de sua energia. \n V.Ondas eletromagnéticas não possuem massa e se propagam com a velocidade 300.000 km/s, para qualquer valor de sua energia. \n Assinale',
     alternatives: [
       '(A) Se apenas as afirmativas I, II e IV forem corretas.',
       '(B) Se apenas as afirmativas I, III e IV forem corretas.',
@@ -293,7 +293,7 @@ export const questions = [
       '(B) acetona e amônia.',
       '(C) hidrogênio ou equivalente.',
       '(D) gás natural ou equivalente.',
-      '(E) gasolina e propyear.',
+      '(E) gasolina e propano.',
     ],
     answer: 'C',
     tip: '',
@@ -567,7 +567,7 @@ export const questions = [
     year: 2021,
     subject: 'NR17',
     question:
-      'A ergonomia é a ciência que estuda a melhor adaptação do trabalho às características fisiológicas e psicológicas do ser humyear. A respeito dos estudos ergonômicos, assinale a afirmativa correta.',
+      'A ergonomia é a ciência que estuda a melhor adaptação do trabalho às características fisiológicas e psicológicas do ser humano. A respeito dos estudos ergonômicos, assinale a afirmativa correta.',
     alternatives: [
       '(A) Devem ser realizados, pelo menos, semestralmente.',
       '(B) Devem considerar as questões econômicas da empresa.',
@@ -650,7 +650,7 @@ export const questions = [
       'No combate a um incêndio, que ocorre em uma subestação de energia elétrica, deve ser utilizado o extintor para a Classe',
     alternatives: ['(A) A', '(B) B.', '(C) C.', '(D) D.', '(E) E.'],
     answer: 'C',
-    tip: 'Classe A = Materiais combustíveis sólidos (Extintor mais recomendado Água Pressurizada-AP pois resfria e abafa), \n Classe B = Materiais combustíveis líquidos (Extintor mais recomendado Espuma pois abafa o fogo fazendo uma camada entre o líquido e o ar), \n Classe C = Ignição elétrica (Extintor mais recomendado é o de CO2 pois retira o comburuente/oxigênio sem muitos dyears aos equipamentos), \n Classe D = Metais Pirofóricos (Extintor mais recomendado é o de pó químico).',
+    tip: 'Classe A = Materiais combustíveis sólidos (Extintor mais recomendado Água Pressurizada-AP pois resfria e abafa), \n Classe B = Materiais combustíveis líquidos (Extintor mais recomendado Espuma pois abafa o fogo fazendo uma camada entre o líquido e o ar), \n Classe C = Ignição elétrica (Extintor mais recomendado é o de CO2 pois retira o comburuente/oxigênio sem muitos danos aos equipamentos), \n Classe D = Metais Pirofóricos (Extintor mais recomendado é o de pó químico).',
   },
   {
     id: 34,
@@ -663,11 +663,11 @@ export const questions = [
     question:
       'Assinale a opção que apresenta a composição e o tempo de mandato da Comissão Interna de Prevenção de Acidentes – CIPA.',
     alternatives: [
-      '(A) Representantes dos empregados e mandato de um year, sem direito à reeleição.',
-      '(B) Representantes dos empregados e mandato de um year, com direito a uma reeleição.',
-      '(C) Representantes do empregador e dos empregados e mandato de um year, sem direito à reeleição.',
-      '(D) Representantes do empregador e dos empregados e mandato de dois years, sem direito à reeleição.',
-      '(E) Representantes do empregador e dos empregados e mandato de um year, com direito a uma reeleição.',
+      '(A) Representantes dos empregados e mandato de um ano, sem direito à reeleição.',
+      '(B) Representantes dos empregados e mandato de um ano, com direito a uma reeleição.',
+      '(C) Representantes do empregador e dos empregados e mandato de um ano, sem direito à reeleição.',
+      '(D) Representantes do empregador e dos empregados e mandato de dois anos, sem direito à reeleição.',
+      '(E) Representantes do empregador e dos empregados e mandato de um ano, com direito a uma reeleição.',
     ],
     answer: 'E',
     tip: '',
@@ -681,7 +681,7 @@ export const questions = [
     year: 2021,
     subject: 'NR15',
     question:
-      'O ruído é um fator de risco presente no cotidiyear e é uma preocupação das atividades de trabalho. A tabela a seguir apresenta o limite máximo de tempo e o tempo real de exposição para cada fonte de ruído.\nFontes de Ruído        Limite Máximo de exposição-horas              Tempo real exposição-horas\n           A                                                      12                                                                  3\n           B                                                      10                                                                  4\n           C                                                       8                                                                   2\nA dosagem de ruído e a tolerância são, respectivamente, de',
+      'O ruído é um fator de risco presente no cotidiano e é uma preocupação das atividades de trabalho. A tabela a seguir apresenta o limite máximo de tempo e o tempo real de exposição para cada fonte de ruído.\nFontes de Ruído        Limite Máximo de exposição-horas              Tempo real exposição-horas\n           A                                                      12                                                                  3\n           B                                                      10                                                                  4\n           C                                                       8                                                                   2\nA dosagem de ruído e a tolerância são, respectivamente, de',
     alternatives: [
       '(A) 10,50 e está acima do limite tolerável.',
       '(B) 4,00 e está acima do limite tolerável.',
@@ -755,7 +755,7 @@ export const questions = [
     year: 2021,
     subject: 'Análise de riscos',
     question:
-      'A higiene ocupacional é um conjunto de ações que visa a preservar a saúde do trabalhador em seu ambiente de trabalho.\n A esse respeito, analise as afirmativas a seguir.\n I. Estimar o grau de criticidade do risco é uma fonte de identificação de riscos.\n II. Inventariar as máquinas é uma forma de identificação de riscos.\n III. Verificar os possíveis dyears para a saúde é uma forma de identificação os riscos.\n Está correto o que se afirma em',
+      'A higiene ocupacional é um conjunto de ações que visa a preservar a saúde do trabalhador em seu ambiente de trabalho.\n A esse respeito, analise as afirmativas a seguir.\n I. Estimar o grau de criticidade do risco é uma fonte de identificação de riscos.\n II. Inventariar as máquinas é uma forma de identificação de riscos.\n III. Verificar os possíveis danos para a saúde é uma forma de identificação os riscos.\n Está correto o que se afirma em',
     alternatives: [
       '(A) I, somente.',
       '(B) II, somente.',
