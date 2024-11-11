@@ -6,3 +6,7 @@ dist
 apps/backend/dist
 apps/backend/dist/tsconfig.build.tsbuildinfo
 apps/frontend/.env
+turbo-test.log
+apps/frontend/src/.DS_Store
+apps/frontend/.turbo/turbo-test.log
+.DS_Store

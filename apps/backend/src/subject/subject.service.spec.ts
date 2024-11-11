@@ -58,7 +58,7 @@ describe("SubjectsService", () => {
       const mockSubjectRepository = {
         create: (createSubjectDTO: CreateSubjectDto) =>
           jest.fn().mockReturnValue(createSubjectDTO),
-        save: jest.fn().mockRejectedValue(new DataBaseError("erro", 254)),
+        save: jest.fn().mockRejectedValue(new DataBaseError("erro", "254")),
       };
       //@ts-expect-error defined part of methods
       service["subjectRepository"] = mockSubjectRepository;

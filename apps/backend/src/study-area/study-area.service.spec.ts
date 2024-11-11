@@ -44,7 +44,7 @@ describe("StudyAreaService", () => {
       const mockStudyAreaRepository = {
         create: (createStudyAreaDTO: CreateStudyAreaDto) =>
           jest.fn().mockReturnValue(createStudyAreaDTO),
-        save: jest.fn().mockRejectedValue(new DataBaseError("erro", 254)),
+        save: jest.fn().mockRejectedValue(new DataBaseError("erro", "254")),
       };
       //@ts-expect-error defined part of methods
       service["studyAreasRepository"] = mockStudyAreaRepository;
